@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import { Analytics } from "@vercel/analytics/next";
 import type React from "react";
 
 const geistSans = Geist({
@@ -69,6 +70,7 @@ export default function RootLayout({
           <div className="flex-grow">{children}</div>
           <Footer />
         </main>
+        <Analytics />
       </body>
     </html>
   );
