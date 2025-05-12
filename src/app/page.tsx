@@ -81,7 +81,7 @@ fetch('https://isleapyear.app/api/check')
         <h2 className="mb-16 text-center font-bold text-4xl">Features</h2>
 
         <div className="grid gap-8 md:grid-cols-3">
-          <div className="rounded-lg border border-gray-800 p-6">
+          <div className="rounded-box border border-gray-800 bg-accent-content p-6">
             <div className="mb-4 text-4xl text-red-500">⚡</div>
             <h3 className="mb-2 font-bold text-xl">Quantum-Powered</h3>
             <p className="text-gray-600">
@@ -90,7 +90,7 @@ fetch('https://isleapyear.app/api/check')
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-800 p-6">
+          <div className="rounded-box border border-gray-800 bg-accent-content p-6">
             <div className="mb-4 text-4xl text-red-500">🔒</div>
             <h3 className="mb-2 font-bold text-xl">Ultra Secure</h3>
             <p className="text-gray-600">
@@ -99,7 +99,7 @@ fetch('https://isleapyear.app/api/check')
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-800 p-6">
+          <div className="rounded-box border border-gray-800 bg-accent-content p-6">
             <div className="mb-4 text-4xl text-red-500">🚀</div>
             <h3 className="mb-2 font-bold text-xl">Hyper Scalable</h3>
             <p className="text-gray-600">
@@ -108,7 +108,7 @@ fetch('https://isleapyear.app/api/check')
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-800 p-6">
+          <div className="rounded-box border border-gray-800 bg-accent-content p-6">
             <div className="mb-4 text-4xl text-red-500">🌐</div>
             <h3 className="mb-2 font-bold text-xl">Multi-Calendar Support</h3>
             <p className="text-gray-600">
@@ -117,7 +117,7 @@ fetch('https://isleapyear.app/api/check')
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-800 p-6">
+          <div className="rounded-box border border-gray-800 bg-accent-content p-6">
             <div className="mb-4 text-4xl text-red-500">📊</div>
             <h3 className="mb-2 font-bold text-xl">Detailed Analytics</h3>
             <p className="text-gray-600">
@@ -126,7 +126,7 @@ fetch('https://isleapyear.app/api/check')
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-800 p-6">
+          <div className="rounded-box border border-gray-800 bg-accent-content p-6">
             <div className="mb-4 text-4xl text-red-500">💸</div>
             <h3 className="mb-2 font-bold text-xl">ROI Guaranteed</h3>
             <p className="text-gray-600">

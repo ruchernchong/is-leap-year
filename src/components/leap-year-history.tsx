@@ -2,7 +2,7 @@ import React from "react";
 
 export const LeapYearHistory = () => {
   return (
-    <div className="rounded-lg border border-gray-800 p-6">
+    <div className="rounded-box border border-gray-800 bg-accent-content p-6">
       <h2 className="mb-4 font-bold text-2xl">The History of Leap Years</h2>
 
       <div className="space-y-6">

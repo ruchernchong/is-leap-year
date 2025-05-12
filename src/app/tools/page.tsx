@@ -134,10 +134,7 @@ fetch('https://isleapyear.app/api/check/2024')
         </div>
 
         <div className="text-center">
-          <Link
-            href="/docs"
-            className="inline-block rounded-md bg-yellow-600 px-6 py-3 font-medium text-white hover:bg-yellow-700"
-          >
+          <Link href="/docs" className="btn btn-warning">
             View Full API Documentation
           </Link>
         </div>
