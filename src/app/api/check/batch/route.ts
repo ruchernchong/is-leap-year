@@ -1,8 +1,9 @@
+import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   findNextGregorianLeapYear,
   isGregorianLeapYear,
 } from "@/utils/leap-year";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 // Handler for batch checking multiple years
 export const POST = async (request: NextRequest) => {
@@ -12,12 +13,12 @@ export const POST = async (request: NextRequest) => {
 
     // Validate input
     if (!body.years || !Array.isArray(body.years)) {
-      return NextResponse.json("Request body must include a 'years' array.");
+      return errorResponse("Request body must include a 'years' array.");
     }
 
     // Limit the number of years that can be checked at once
     if (body.years.length > 100) {
-      return NextResponse.json(
+      return errorResponse(
         "You can check a maximum of 100 years in a single request.",
       );
     }
@@ -28,10 +29,9 @@ export const POST = async (request: NextRequest) => {
 
       // Validate each year
       if (Number.isNaN(year) || year < 1582 || year > 9999) {
-        return {
-          yearChecked: yearInput,
-          error: "Invalid year. Must be a number between 1582 and 9999.",
-        };
+        throw new Error(
+          `Invalid year ${yearInput}. Must be a number between 1582 and 9999.`,
+        );
       }
 
       const isLeapYear = isGregorianLeapYear(year);
@@ -44,13 +44,13 @@ export const POST = async (request: NextRequest) => {
       };
     });
 
-    return NextResponse.json({
+    return successResponse({
       results,
       count: results.length,
     });
   } catch (error) {
-    return NextResponse.json(
-      "The request body must be valid JSON with a 'years' array.",
-    );
+    if (error instanceof Error) {
+      return errorResponse(error.message);
+    }
   }
 };

@@ -1,3 +1,4 @@
+import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   getDaysInFebruary,
   isChineseLeapYear,
@@ -5,7 +6,7 @@ import {
   isHebrewLeapYear,
   isJulianLeapYear,
 } from "@/utils/leap-year";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export const GET = async (
   request: NextRequest,
@@ -15,22 +16,14 @@ export const GET = async (
   const supportedCalendars = ["gregorian", "julian", "hebrew", "chinese"];
 
   if (!supportedCalendars.includes(type.toLowerCase())) {
-    return NextResponse.json(
-      {
-        error: `Unsupported calendar type. Supported types are: ${supportedCalendars.join(", ")}`,
-      },
-      { status: 400 },
+    return errorResponse(
+      `Unsupported calendar type. Supported types are: ${supportedCalendars.join(", ")}`,
     );
   }
 
   const year = Number.parseInt(yearParam, 10);
   if (Number.isNaN(year) || year < 1 || year > 9999) {
-    return NextResponse.json(
-      {
-        error: "Year must be a number between 1 and 9999.",
-      },
-      { status: 400 },
-    );
+    return errorResponse("Year must be a number between 1 and 9999.");
   }
 
   let isLeapYear: boolean;
@@ -74,8 +67,8 @@ export const GET = async (
     ][year % 12];
   }
 
-  return NextResponse.json({
-    calendar_type: type.toLowerCase(),
+  return successResponse({
+    type: type.toLowerCase(),
     isLeapYear,
     daysInFebruary: getDaysInFebruary(type, year),
     yearChecked: year,

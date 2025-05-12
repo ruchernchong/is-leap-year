@@ -1,5 +1,6 @@
+import { errorResponse, successResponse } from "@/utils/api-response";
 import { isGregorianLeapYear } from "@/utils/leap-year";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 interface DecadeData {
   decade: string;
@@ -22,27 +23,23 @@ export const GET = async (request: NextRequest) => {
 
   // Validate parameters
   if (Number.isNaN(startYear) || Number.isNaN(endYear)) {
-    return NextResponse.json(
+    return errorResponse(
       "Both 'start' and 'end' parameters must be valid integers.",
     );
   }
 
   if (startYear < 1582 || endYear < 1582) {
-    return NextResponse.json(
+    return errorResponse(
       "Years must be 1582 or later (Gregorian calendar introduction).",
     );
   }
 
   if (startYear > endYear) {
-    return NextResponse.json(
-      "Start year must be less than or equal to end year.",
-    );
+    return errorResponse("Start year must be less than or equal to end year.");
   }
 
   if (endYear - startYear > 1000) {
-    return NextResponse.json(
-      "Range cannot exceed 1000 years for this endpoint.",
-    );
+    return errorResponse("Range cannot exceed 1000 years for this endpoint.");
   }
 
   // Calculate the first decade start year (round down to nearest decade)
@@ -100,7 +97,7 @@ export const GET = async (request: NextRequest) => {
 
   const overallLeapYearPercentage = (totalLeapYears / totalYears) * 100;
 
-  return NextResponse.json({
+  return successResponse({
     startYear,
     endYear,
     totalYears,

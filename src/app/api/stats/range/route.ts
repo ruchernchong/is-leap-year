@@ -1,5 +1,6 @@
+import { errorResponse, successResponse } from "@/utils/api-response";
 import { isGregorianLeapYear } from "@/utils/leap-year";
-import { type NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 // Get the total number of leap years in a date range
 export const GET = async (request: NextRequest) => {
@@ -10,28 +11,26 @@ export const GET = async (request: NextRequest) => {
 
   // Validate parameters
   if (!startParam || !endParam) {
-    return NextResponse.json("Both 'start' and 'end' parameters are required.");
+    return errorResponse("Both 'start' and 'end' parameters are required.");
   }
 
   const start = Number.parseInt(startParam, 10);
   const end = Number.parseInt(endParam, 10);
 
   if (Number.isNaN(start) || Number.isNaN(end)) {
-    return NextResponse.json(
+    return errorResponse(
       "Both 'start' and 'end' parameters must be valid integers.",
     );
   }
 
   if (start < 1582 || end < 1582) {
-    return NextResponse.json(
+    return errorResponse(
       "Years must be 1582 or later (Gregorian calendar introduction).",
     );
   }
 
   if (start > end) {
-    return NextResponse.json(
-      "Start year must be less than or equal to end year.",
-    );
+    return errorResponse("Start year must be less than or equal to end year.");
   }
 
   // Calculate leap years in the range
@@ -52,7 +51,7 @@ export const GET = async (request: NextRequest) => {
   const totalYears = end - start + 1;
   const leapYearPercentage = (leapYearCount / totalYears) * 100;
 
-  return NextResponse.json({
+  return successResponse({
     startYear: start,
     endYear: end,
     totalYears,
