@@ -9,31 +9,31 @@ export default function ApiDocs() {
       <div className="mx-auto max-w-5xl px-4 py-12">
         <h1 className="mb-8 font-bold text-4xl">API Documentation</h1>
 
-        <div className="mb-12 rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="mb-12 rounded-lg border border-gray-800 p-6">
           <h2 className="mb-4 font-bold text-2xl">Overview</h2>
-          <p className="mb-4 text-gray-300">
+          <p className="mb-4 text-gray-600">
             The IsLeapYear API provides a simple and reliable way to determine
             if a given year is a leap year. Our sophisticated algorithms take
             into account all nuances of the Gregorian calendar system.
           </p>
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             Base URL:{" "}
-            <code className="rounded bg-gray-800 px-2 py-1 text-yellow-500">
+            <code className="rounded bg-gray-100 px-2 py-1 text-red-500">
               https://{DOMAIN_NAME}/api
             </code>
           </p>
         </div>
-        <div className="mb-12 rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="mb-12 rounded-lg border border-gray-800 p-6">
           <h2 className="mb-4 font-bold text-2xl">Authentication</h2>
-          <p className="mb-4 text-gray-300">
+          <p className="mb-4 text-gray-600">
             No authentication is required for public API endpoints.
           </p>
         </div>
-        <div className="mb-12 rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="mb-12 rounded-lg border border-gray-800 p-6">
           <h2 className="mb-4 font-bold text-2xl">Endpoints</h2>
           <div className="mb-8">
             <h3 className="mb-2 font-bold text-xl">GET /check</h3>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-gray-600">
               Returns information about the current year's leap year status.
             </p>
             <h4 className="mb-2 font-bold">Example Request</h4>
@@ -54,16 +54,16 @@ export default function ApiDocs() {
           </div>
           <div className="mb-8">
             <h3 className="mb-2 font-bold text-xl">GET /check/{"{year}"}</h3>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-gray-600">
               Returns information about a specific year's leap year status.
             </p>
             <h4 className="mb-2 font-bold">Parameters</h4>
-            <div className="mb-4 rounded bg-gray-800 p-4">
+            <div className="mb-4 rounded bg-gray-200 p-4">
               <div className="font-bold">Path Parameters</div>
               <div className="mt-2 ml-4">
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">year</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">year</span>
+                  <span className="ml-4 text-gray-600">
                     Required - The year to check (1582-9999)
                   </span>
                 </div>
@@ -87,14 +87,14 @@ export default function ApiDocs() {
           </div>
           <div className="mb-8">
             <h3 className="mb-2 font-bold text-xl">POST /check/batch</h3>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-gray-600">
               Checks multiple years at once for more efficient processing.
             </p>
             <h4 className="mb-2 font-bold">Request Body</h4>
-            <div className="mb-4 rounded bg-gray-800 p-4">
+            <div className="mb-4 rounded bg-gray-200 p-4">
               <div className="mb-2">
-                <span className="font-mono text-yellow-500">years</span>
-                <span className="ml-4 text-gray-400">
+                <span className="font-mono text-red-500">years</span>
+                <span className="ml-4 text-gray-600">
                   Required - Array of years to check (max 100 years per request)
                 </span>
               </div>
@@ -142,21 +142,21 @@ export default function ApiDocs() {
           </div>
           <div className="mb-8">
             <h3 className="mb-2 font-bold text-xl">GET /stats/range</h3>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-gray-600">
               Returns statistics about leap years within a specified date range.
             </p>
             <h4 className="mb-2 font-bold">Query Parameters</h4>
-            <div className="mb-4 rounded bg-gray-800 p-4">
+            <div className="mb-4 rounded bg-gray-200 p-4">
               <div className="ml-4">
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">start</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">start</span>
+                  <span className="ml-4 text-gray-600">
                     Required - Start year for the range (min: 1582)
                   </span>
                 </div>
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">end</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">end</span>
+                  <span className="ml-4 text-gray-600">
                     Required - End year for the range (max: 9999)
                   </span>
                 </div>
@@ -182,23 +182,23 @@ export default function ApiDocs() {
           </div>
           <div className="mb-8">
             <h3 className="mb-2 font-bold text-xl">GET /stats/distribution</h3>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-gray-600">
               Returns detailed statistics about leap years by decade within a
               specified date range.
             </p>
             <h4 className="mb-2 font-bold">Query Parameters</h4>
-            <div className="mb-4 rounded bg-gray-800 p-4">
+            <div className="mb-4 rounded bg-gray-200 p-4">
               <div className="ml-4">
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">start</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">start</span>
+                  <span className="ml-4 text-gray-600">
                     Optional - Start year for the range (min: 1582, default:
                     1900)
                   </span>
                 </div>
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">end</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">end</span>
+                  <span className="ml-4 text-gray-600">
                     Optional - End year for the range (max: 9999, default: 2100)
                   </span>
                 </div>
@@ -270,25 +270,25 @@ export default function ApiDocs() {
             <h3 className="mb-2 font-bold text-xl">
               GET /calendar/{"{type}"}/check/{"{year}"}
             </h3>
-            <p className="mb-4 text-gray-300">
+            <p className="mb-4 text-gray-600">
               Returns information about a specific year's leap year status in
               different calendar systems.
             </p>
 
             <h4 className="mb-2 font-bold">Parameters</h4>
-            <div className="mb-4 rounded bg-gray-800 p-4">
+            <div className="mb-4 rounded bg-gray-200 p-4">
               <div className="font-bold">Path Parameters</div>
               <div className="mt-2 ml-4">
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">type</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">type</span>
+                  <span className="ml-4 text-gray-600">
                     Required - Calendar type (gregorian, julian, hebrew,
                     chinese)
                   </span>
                 </div>
                 <div className="mb-2">
-                  <span className="font-mono text-yellow-500">year</span>
-                  <span className="ml-4 text-gray-400">
+                  <span className="font-mono text-red-500">year</span>
+                  <span className="ml-4 text-gray-600">
                     Required - The year to check
                   </span>
                 </div>
@@ -303,7 +303,7 @@ export default function ApiDocs() {
           </div>
         </div>
 
-        <div className="mb-12 rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="mb-12 rounded-lg border border-gray-800 p-6">
           <h2 className="mb-4 font-bold text-2xl">Response Format</h2>
 
           <table className="w-full border-collapse text-left">
@@ -314,7 +314,7 @@ export default function ApiDocs() {
                 <th className="px-4 py-2 font-bold">Description</th>
               </tr>
             </thead>
-            <tbody className="text-gray-300">
+            <tbody className="text-gray-600">
               <tr className="border-gray-800 border-b">
                 <td className="px-4 py-2 font-mono">isLeapYear</td>
                 <td className="px-4 py-2">Boolean</td>
@@ -345,16 +345,16 @@ export default function ApiDocs() {
           </table>
         </div>
 
-        <div className="mb-12 rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="mb-12 rounded-lg border border-gray-800 p-6">
           <h2 className="mb-4 font-bold text-2xl">Rate Limits</h2>
 
-          <p className="mb-4 text-gray-300">
+          <p className="mb-4 text-gray-600">
             To ensure service stability, the API has a default rate limit of 100
             requests per day with a burst limit of 5 requests per second.
           </p>
         </div>
 
-        <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="rounded-lg border border-gray-800 p-6">
           <h2 className="mb-4 font-bold text-2xl">Error Codes</h2>
 
           <table className="w-full border-collapse text-left">
@@ -365,7 +365,7 @@ export default function ApiDocs() {
                 <th className="px-4 py-2 font-bold">Description</th>
               </tr>
             </thead>
-            <tbody className="text-gray-300">
+            <tbody className="text-gray-600">
               <tr className="border-gray-800 border-b">
                 <td className="px-4 py-2">400</td>
                 <td className="px-4 py-2">Bad Request</td>
@@ -392,13 +392,12 @@ export default function ApiDocs() {
         <div className="mt-12">
           <h2 className="mb-6 font-bold text-2xl">Client Libraries</h2>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <h3 className="mb-4 font-bold text-xl">JavaScript</h3>
-              <CodeBlock
-                language="javascript"
-                title="Usage"
-                code={`import { IsLeapYearClient } from 'is-leap-year-client'; 
+          <div className="rounded-lg border border-gray-800 p-6">
+            <h3 className="mb-4 font-bold text-xl">JavaScript</h3>
+            <CodeBlock
+              language="javascript"
+              title="Usage"
+              code={`import { IsLeapYearClient } from 'is-leap-year-client'; 
 
 // Initialize the client
 const client = new IsLeapYearClient();
@@ -410,8 +409,7 @@ console.log(result.isLeapYear);
 // Check specific year
 const result2024 = await client.check(2024);
 console.log(result2024.isLeapYear); // true`}
-              />
-            </div>
+            />
           </div>
         </div>
       </div>

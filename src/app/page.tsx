@@ -4,9 +4,9 @@ import React from "react";
 
 export default function Home() {
   return (
-    <>
+    <div>
       {/* Hero Section */}
-      <section className="mx-auto max-w-6xl px-4 py-16 text-center">
+      <section className="px-4 py-16 text-center">
         <h1 className="mb-6 font-bold text-5xl tracking-tight">
           Say Goodbye to Leap Year Confusion, Forever.
         </h1>
@@ -19,10 +19,10 @@ export default function Home() {
           .
         </p>
         <div className="mx-auto mb-12 max-w-2xl rounded-lg bg-gray-800 p-6">
-          <div className="mb-1 text-left font-mono text-gray-400">
+          <div className="mb-1 text-left font-mono text-gray-600">
             {/* What most companies still use in 2025 */}
           </div>
-          <div className="mb-2 rounded bg-gray-900 p-4 text-left font-mono text-red-400">
+          <div className="mb-2 rounded p-4 text-left font-mono text-red-400">
             if (month === 2) {"{"}
             <br />
             &nbsp;&nbsp;days = 28; {/* Forgetting leap years! */}
@@ -32,38 +32,37 @@ export default function Home() {
         </div>
       </section>
       {/* Our Solution Section */}
-      <section className="bg-gradient-to-b from-gray-900 to-gray-950 py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-12 md:grid-cols-2">
-            <div>
-              <h3 className="mb-4 font-bold text-2xl text-yellow-500">
-                The API Endpoint
-              </h3>
-              <CodeBlock
-                language="bash"
-                title="API Request"
-                code={`GET "https://isleapyear.app/api/check"`}
-              />
-              <CodeBlock
-                language="json"
-                title="API Response"
-                code={`{
+      <section className="py-20">
+        <div className="grid gap-12 md:grid-cols-2">
+          <div>
+            <h3 className="mb-4 font-bold text-2xl text-red-500">
+              The API Endpoint
+            </h3>
+            <CodeBlock
+              language="bash"
+              title="API Request"
+              code={`GET "https://isleapyear.app/api/check"`}
+            />
+            <CodeBlock
+              language="json"
+              title="API Response"
+              code={`{
   "isLeapYear": false,
   "daysInFebruary": 28,
   "nextLeapYear": 2028,
   "yearChecked": 2025,
 }`}
-              />
-            </div>
+            />
+          </div>
 
-            <div>
-              <h3 className="mb-4 font-bold text-2xl text-yellow-500">
-                Implementation Example
-              </h3>
-              <CodeBlock
-                language="javascript"
-                title="JavaScript"
-                code={`// Using fetch API
+          <div>
+            <h3 className="mb-4 font-bold text-2xl text-red-500">
+              Implementation Example
+            </h3>
+            <CodeBlock
+              language="javascript"
+              title="JavaScript"
+              code={`// Using fetch API
 fetch('https://isleapyear.app/api/check')
   .then(response => response.json())
   .then(data => {
@@ -73,99 +72,92 @@ fetch('https://isleapyear.app/api/check')
       februaryDays.textContent = "28 boring days";
     }
   });`}
-              />
-            </div>
+            />
           </div>
         </div>
       </section>
       {/* Features Section */}
       <section className="py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="mb-16 text-center font-bold text-4xl">Features</h2>
+        <h2 className="mb-16 text-center font-bold text-4xl">Features</h2>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="mb-4 text-4xl text-yellow-500">⚡</div>
-              <h3 className="mb-2 font-bold text-xl">Quantum-Powered</h3>
-              <p className="text-gray-400">
-                Our proprietary Quantum LeapCore™ Engine consults astronomical
-                data and calculates leap years with 99.9999% accuracy.
-              </p>
-            </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          <div className="rounded-lg border border-gray-800 p-6">
+            <div className="mb-4 text-4xl text-red-500">⚡</div>
+            <h3 className="mb-2 font-bold text-xl">Quantum-Powered</h3>
+            <p className="text-gray-600">
+              Our proprietary Quantum LeapCore™ Engine consults astronomical
+              data and calculates leap years with 99.9999% accuracy.
+            </p>
+          </div>
 
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="mb-4 text-4xl text-yellow-500">🔒</div>
-              <h3 className="mb-2 font-bold text-xl">Ultra Secure</h3>
-              <p className="text-gray-400">
-                Military-grade encryption ensures your leap year status remains
-                confidential from competitors.
-              </p>
-            </div>
+          <div className="rounded-lg border border-gray-800 p-6">
+            <div className="mb-4 text-4xl text-red-500">🔒</div>
+            <h3 className="mb-2 font-bold text-xl">Ultra Secure</h3>
+            <p className="text-gray-600">
+              Military-grade encryption ensures your leap year status remains
+              confidential from competitors.
+            </p>
+          </div>
 
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="mb-4 text-4xl text-yellow-500">🚀</div>
-              <h3 className="mb-2 font-bold text-xl">Hyper Scalable</h3>
-              <p className="text-gray-400">
-                Built on top of serverless technology to handle billions of leap
-                year checks per second.
-              </p>
-            </div>
+          <div className="rounded-lg border border-gray-800 p-6">
+            <div className="mb-4 text-4xl text-red-500">🚀</div>
+            <h3 className="mb-2 font-bold text-xl">Hyper Scalable</h3>
+            <p className="text-gray-600">
+              Built on top of serverless technology to handle billions of leap
+              year checks per second.
+            </p>
+          </div>
 
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="mb-4 text-4xl text-yellow-500">🌐</div>
-              <h3 className="mb-2 font-bold text-xl">Multi-Calendar Support</h3>
-              <p className="text-gray-400">
-                Supports Gregorian, Julian, Hebrew, and Mayan calendar systems
-                for truly global applications.
-              </p>
-            </div>
+          <div className="rounded-lg border border-gray-800 p-6">
+            <div className="mb-4 text-4xl text-red-500">🌐</div>
+            <h3 className="mb-2 font-bold text-xl">Multi-Calendar Support</h3>
+            <p className="text-gray-600">
+              Supports Gregorian, Julian, Hebrew, and Mayan calendar systems for
+              truly global applications.
+            </p>
+          </div>
 
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="mb-4 text-4xl text-yellow-500">📊</div>
-              <h3 className="mb-2 font-bold text-xl">Detailed Analytics</h3>
-              <p className="text-gray-400">
-                Track your leap year API usage across all your applications with
-                our comprehensive dashboard.
-              </p>
-            </div>
+          <div className="rounded-lg border border-gray-800 p-6">
+            <div className="mb-4 text-4xl text-red-500">📊</div>
+            <h3 className="mb-2 font-bold text-xl">Detailed Analytics</h3>
+            <p className="text-gray-600">
+              Track your leap year API usage across all your applications with
+              our comprehensive dashboard.
+            </p>
+          </div>
 
-            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-              <div className="mb-4 text-4xl text-yellow-500">💸</div>
-              <h3 className="mb-2 font-bold text-xl">ROI Guaranteed</h3>
-              <p className="text-gray-400">
-                Our enterprise customers report a 400% ROI from preventing leap
-                year-related disasters.
-              </p>
-            </div>
+          <div className="rounded-lg border border-gray-800 p-6">
+            <div className="mb-4 text-4xl text-red-500">💸</div>
+            <h3 className="mb-2 font-bold text-xl">ROI Guaranteed</h3>
+            <p className="text-gray-600">
+              Our enterprise customers report a 400% ROI from preventing leap
+              year-related disasters.
+            </p>
           </div>
         </div>
       </section>
       {/* History Section */}
-      <section className="bg-gradient-to-b from-gray-950 to-gray-900 py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="mb-12 text-center font-bold text-4xl">
-            Understanding Leap Years:{" "}
-            <span className="text-yellow-500">A Historical Perspective</span>
-          </h2>
-          <LeapYearHistory />
-        </div>
+      <section className="py-20">
+        <h2 className="mb-12 text-center font-bold text-4xl">
+          Understanding Leap Years:{" "}
+          <span className="text-red-500">A Historical Perspective</span>
+        </h2>
+        <LeapYearHistory />
       </section>
       {/* The Real Solution Section */}
       <section className="py-20">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <h2 className="mb-8 font-bold text-4xl">
-            The <span className="text-yellow-500">Actual</span> Solution
-          </h2>
-          <p className="mb-8 text-gray-400 text-xl">
-            Of course, all of this is completely unnecessary. Here's how you
-            actually check for a leap year:
-          </p>
+        <h2 className="mb-8 font-bold text-4xl">
+          The <span className="text-red-500">Actual</span> Solution
+        </h2>
+        <p className="mb-8 text-gray-600 text-xl">
+          Of course, all of this is completely unnecessary. Here's how you
+          actually check for a leap year:
+        </p>
 
-          <div className="mx-auto max-w-2xl">
-            <CodeBlock
-              language="javascript"
-              title="Actual Leap Year Check"
-              code={`function isLeapYear(year) {
+        <CodeBlock
+          language="javascript"
+          title="Actual Leap Year Check"
+          code={`function isLeapYear(year) {
   return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
 }
 
@@ -173,14 +165,12 @@ fetch('https://isleapyear.app/api/check')
 console.log(isLeapYear(2024)); // true
 console.log(isLeapYear(2025)); // false
 console.log(isLeapYear(2100)); // false (century year)`}
-            />
-          </div>
+        />
 
-          <p className="mt-8 text-gray-400">
-            But where's the fun in that? Our engineers needed something to do!
-          </p>
-        </div>
+        <p className="mt-8 text-gray-600">
+          But where's the fun in that? Our engineers needed something to do!
+        </p>
       </section>
-    </>
+    </div>
   );
 }

@@ -60,16 +60,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="canonical" href="https://{DOMAIN_NAME}" />
-        <meta name="theme-color" content="#111827" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{BRAND_NAME}</title>
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <main className="flex min-h-screen flex-col bg-gray-950 text-white">
+        <main className="container mx-auto">
           <Navbar />
-          <div className="flex-grow">{children}</div>
+          <div>{children}</div>
           <Footer />
         </main>
         <Analytics />

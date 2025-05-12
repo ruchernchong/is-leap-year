@@ -2,15 +2,15 @@ import React from "react";
 
 export const LeapYearHistory = () => {
   return (
-    <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+    <div className="rounded-lg border border-gray-800 p-6">
       <h2 className="mb-4 font-bold text-2xl">The History of Leap Years</h2>
 
       <div className="space-y-6">
         <div>
-          <h3 className="mb-2 font-bold text-xl text-yellow-500">
+          <h3 className="mb-2 font-bold text-red-500 text-xl">
             Ancient Origins
           </h3>
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             The concept of leap years dates back to ancient Egypt. Around 238
             BCE, Ptolemy III Euergetes tried to add an extra day every four
             years. However, the Egyptian priests resisted this change, and it
@@ -19,10 +19,10 @@ export const LeapYearHistory = () => {
         </div>
 
         <div>
-          <h3 className="mb-2 font-bold text-xl text-yellow-500">
+          <h3 className="mb-2 font-bold text-red-500 text-xl">
             Julian Calendar
           </h3>
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             In 45 BCE, Julius Caesar implemented the Julian calendar with the
             help of the astronomer Sosigenes. This calendar introduced a leap
             day every four years without exception, which was an improvement but
@@ -31,10 +31,10 @@ export const LeapYearHistory = () => {
         </div>
 
         <div>
-          <h3 className="mb-2 font-bold text-xl text-yellow-500">
+          <h3 className="mb-2 font-bold text-red-500 text-xl">
             Gregorian Reform
           </h3>
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             By the 16th century, the Julian calendar had drifted about 10 days
             from the solar year. In 1582, Pope Gregory XIII introduced the
             Gregorian calendar, which we still use today. It refined the leap
@@ -45,10 +45,10 @@ export const LeapYearHistory = () => {
         </div>
 
         <div>
-          <h3 className="mb-2 font-bold text-xl text-yellow-500">
+          <h3 className="mb-2 font-bold text-red-500 text-xl">
             Adoption Timeline
           </h3>
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             The Gregorian calendar wasn&apos;t adopted simultaneously worldwide.
             Catholic countries adopted it first in 1582. Protestant regions
             followed later, with Great Britain and its colonies (including what
@@ -59,10 +59,10 @@ export const LeapYearHistory = () => {
         </div>
 
         <div>
-          <h3 className="mb-2 font-bold text-xl text-yellow-500">
+          <h3 className="mb-2 font-bold text-red-500 text-xl">
             Modern Accuracy
           </h3>
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             The Gregorian calendar&apos;s leap year system creates a mean year
             of 365.2425 days, which is very close to the actual solar year of
             approximately 365.2422 days. This means it will take about 3,300
@@ -73,7 +73,7 @@ export const LeapYearHistory = () => {
 
       <div className="mt-6">
         <h3 className="mb-2 font-bold text-xl">Fun Leap Year Facts</h3>
-        <ul className="list-inside list-disc space-y-2 text-gray-300">
+        <ul className="list-inside list-disc space-y-2 text-gray-600">
           <li>
             Leap year babies (born on February 29) are sometimes called
             &quot;leaplings&quot;

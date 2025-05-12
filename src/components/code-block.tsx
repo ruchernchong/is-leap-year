@@ -19,7 +19,7 @@ export function CodeBlock({ code, language, title }: CodeBlockProps) {
           </div>
         </div>
       )}
-      <pre className="overflow-x-auto bg-gray-900 p-4">
+      <pre className="overflow-x-auto p-4">
         <code className={`language-${language} text-sm`}>{code}</code>
       </pre>
     </div>
