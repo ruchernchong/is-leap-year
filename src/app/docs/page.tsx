@@ -1,4 +1,5 @@
 import { CodeBlock } from "@/components/code-block";
+import { DOMAIN_NAME } from "@/constants";
 import React from "react";
 
 export default function ApiDocs() {
@@ -18,7 +19,7 @@ export default function ApiDocs() {
           <p className="text-gray-300">
             Base URL:{" "}
             <code className="rounded bg-gray-800 px-2 py-1 text-yellow-500">
-              https://isleapyear.com/api
+              https://{DOMAIN_NAME}/api
             </code>
           </p>
         </div>
@@ -38,7 +39,7 @@ export default function ApiDocs() {
             <h4 className="mb-2 font-bold">Example Request</h4>
             <CodeBlock
               language="bash"
-              code={`curl -X GET "https://isleapyear.com/api/check"`}
+              code={`curl -X GET "https://isleapyear.app/api/check"`}
             />
             <h4 className="mt-4 mb-2 font-bold">Example Response</h4>
             <CodeBlock
@@ -71,7 +72,7 @@ export default function ApiDocs() {
             <h4 className="mb-2 font-bold">Example Request</h4>
             <CodeBlock
               language="bash"
-              code={`curl -X GET "https://isleapyear.com/api/check/2024"`}
+              code={`curl -X GET "https://isleapyear.app/api/check/2024"`}
             />
             <h4 className="mt-4 mb-2 font-bold">Example Response</h4>
             <CodeBlock
@@ -101,7 +102,7 @@ export default function ApiDocs() {
             <h4 className="mb-2 font-bold">Example Request</h4>
             <CodeBlock
               language="bash"
-              code={`curl -X POST "https://isleapyear.com/api/check/batch" \\
+              code={`curl -X POST "https://isleapyear.app/api/check/batch" \\
   -H "Content-Type: application/json" \\
   -d '{"years": [2023, 2024, 2025, 2100]}'`}
             />
@@ -164,7 +165,7 @@ export default function ApiDocs() {
             <h4 className="mb-2 font-bold">Example Request</h4>
             <CodeBlock
               language="bash"
-              code={`curl -X GET "https://isleapyear.com/api/stats/range?start=2000&end=2050"`}
+              code={`curl -X GET "https://isleapyear.app/api/stats/range?start=2000&end=2050"`}
             />
             <h4 className="mt-4 mb-2 font-bold">Example Response</h4>
             <CodeBlock
@@ -206,7 +207,7 @@ export default function ApiDocs() {
             <h4 className="mb-2 font-bold">Example Request</h4>
             <CodeBlock
               language="bash"
-              code={`curl -X GET "https://isleapyear.com/api/stats/distribution?start=2000&end=2050"`}
+              code={`curl -X GET "https://isleapyear.app/api/stats/distribution?start=2000&end=2050"`}
             />
             <h4 className="mt-4 mb-2 font-bold">Example Response</h4>
             <CodeBlock
@@ -297,7 +298,7 @@ export default function ApiDocs() {
             <h4 className="mb-2 font-bold">Example Request</h4>
             <CodeBlock
               language="bash"
-              code={`curl -X GET "https://isleapyear.com/api/calendar/julian/check/2024"`}
+              code={`curl -X GET "https://isleapyear.app/api/calendar/julian/check/2024"`}
             />
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { BRAND_NAME } from "@/constants";
 import Link from "next/link";
 import React from "react";
 
@@ -6,7 +7,7 @@ export default function Navbar() {
     <header className="border-gray-800 border-b bg-gray-900">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link href="/" className="font-bold text-xl">
-          IsLeapYear.com
+          {BRAND_NAME}
         </Link>
         <nav>
           <ul className="flex space-x-6">

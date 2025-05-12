@@ -42,7 +42,7 @@ export default function Home() {
               <CodeBlock
                 language="bash"
                 title="API Request"
-                code={`GET "https://isleapyear.com/api/check"`}
+                code={`GET "https://isleapyear.app/api/check"`}
               />
               <CodeBlock
                 language="json"
@@ -64,7 +64,7 @@ export default function Home() {
                 language="javascript"
                 title="JavaScript"
                 code={`// Using fetch API
-fetch('https://isleapyear.com/api/check')
+fetch('https://isleapyear.app/api/check')
   .then(response => response.json())
   .then(data => {
     if (data.isLeapYear) {

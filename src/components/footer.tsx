@@ -1,3 +1,4 @@
+import { BRAND_NAME } from "@/constants";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="mb-8 grid gap-8 md:grid-cols-3">
           <div>
-            <h3 className="mb-4 font-bold text-lg">IsLeapYear.com</h3>
+            <h3 className="mb-4 font-bold text-lg">{BRAND_NAME}</h3>
             <p className="text-gray-400 text-sm">
               Providing reliable leap year detection since 2025. Our mission is
               to eliminate date calculation errors from the world.
@@ -64,8 +65,7 @@ export default function Footer() {
 
         <div className="border-gray-800 border-t pt-6 text-center text-gray-400 text-sm">
           <p>
-            © {new Date().getFullYear()} IsLeapYear Technologies. All rights
-            reserved.
+            © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
           </p>
         </div>
       </div>

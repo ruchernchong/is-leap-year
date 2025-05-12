@@ -120,7 +120,7 @@ export default function ToolsPage() {
                 language="javascript"
                 title="Fetch API Example"
                 code={`// Check if 2024 is a leap year
-fetch('https://isleapyear.com/api/check/2024')
+fetch('https://isleapyear.app/api/check/2024')
   .then(response => response.json())
   .then(data => {
     console.log(\`Is 2024 a leap year? \${data.isLeapYear}\`);

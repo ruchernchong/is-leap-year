@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import { BRAND_NAME, DOMAIN_NAME } from "@/constants";
 import { Analytics } from "@vercel/analytics/next";
 import type React from "react";
 
@@ -17,38 +18,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IsLeapYear.com - The Ultimate Leap Year Detection API",
+  title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
   description:
     "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
   keywords:
     "leap year, leap year api, date calculation, calendar api, leap year detection, gregorian calendar, julian calendar, february 29",
-  authors: [{ name: "IsLeapYear.com Team" }],
+  authors: [{ name: `${BRAND_NAME} Team` }],
   category: "Technology",
-  creator: "IsLeapYear.com",
-  publisher: "IsLeapYear.com",
-  applicationName: "IsLeapYear",
+  creator: BRAND_NAME,
+  publisher: BRAND_NAME,
+  applicationName: BRAND_NAME,
   openGraph: {
     type: "website",
-    url: "https://isleapyear.com",
-    title: "IsLeapYear.com - The Ultimate Leap Year Detection API",
+    url: "https://{DOMAIN_NAME}",
+    title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
     description:
       "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
-    siteName: "IsLeapYear.com",
+    siteName: BRAND_NAME,
     images: [
       {
-        url: "https://isleapyear.com/api-banner.png",
+        url: `https://${DOMAIN_NAME}/api-banner.png`,
         width: 1200,
         height: 630,
-        alt: "IsLeapYear.com API",
+        alt: `${BRAND_NAME} API`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IsLeapYear.com - The Ultimate Leap Year Detection API",
+    title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
     description:
       "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
-    images: ["https://isleapyear.com/api-banner.png"],
+    images: ["https://{DOMAIN_NAME}/api-banner.png"],
   },
 };
 
@@ -60,9 +61,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://isleapyear.com" />
+        <link rel="canonical" href="https://{DOMAIN_NAME}" />
         <meta name="theme-color" content="#111827" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{BRAND_NAME}</title>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <main className="flex min-h-screen flex-col bg-gray-950 text-white">
