@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="garden">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <main className="container mx-auto">
           <Navbar />
