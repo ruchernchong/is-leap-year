@@ -6,23 +6,23 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-5xl font-bold tracking-tight mb-6">
+      <section className="mx-auto max-w-6xl px-4 py-16 text-center">
+        <h1 className="mb-6 font-bold text-5xl tracking-tight">
           Say Goodbye to Leap Year Confusion, Forever.
         </h1>
-        <p className="text-2xl mb-12">
+        <p className="mb-12 text-2xl">
           Every four years, millions of developers face the same crisis:
-          <span className="text-red-500 font-bold">
+          <span className="font-bold text-red-500">
             {" "}
             broken date calculations due to leap years
           </span>
           .
         </p>
-        <div className="bg-gray-800 p-6 rounded-lg mb-12 mx-auto max-w-2xl">
-          <div className="font-mono text-gray-400 mb-1 text-left">
+        <div className="mx-auto mb-12 max-w-2xl rounded-lg bg-gray-800 p-6">
+          <div className="mb-1 text-left font-mono text-gray-400">
             {/* What most companies still use in 2025 */}
           </div>
-          <div className="font-mono bg-gray-900 p-4 rounded text-left mb-2 text-red-400">
+          <div className="mb-2 rounded bg-gray-900 p-4 text-left font-mono text-red-400">
             if (month === 2) {"{"}
             <br />
             &nbsp;&nbsp;days = 28; {/* Forgetting leap years! */}
@@ -33,10 +33,10 @@ export default function Home() {
       </section>
       {/* Our Solution Section */}
       <section className="bg-gradient-to-b from-gray-900 to-gray-950 py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid gap-12 md:grid-cols-2">
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-yellow-500">
+              <h3 className="mb-4 font-bold text-2xl text-yellow-500">
                 The API Endpoint
               </h3>
               <CodeBlock
@@ -57,7 +57,7 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-yellow-500">
+              <h3 className="mb-4 font-bold text-2xl text-yellow-500">
                 Implementation Example
               </h3>
               <CodeBlock
@@ -80,58 +80,58 @@ fetch('https://isleapyear.com/api/check')
       </section>
       {/* Features Section */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-16 text-center">Features</h2>
+        <div className="mx-auto max-w-6xl px-4">
+          <h2 className="mb-16 text-center font-bold text-4xl">Features</h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <div className="text-yellow-500 text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-bold mb-2">Quantum-Powered</h3>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+              <div className="mb-4 text-4xl text-yellow-500">⚡</div>
+              <h3 className="mb-2 font-bold text-xl">Quantum-Powered</h3>
               <p className="text-gray-400">
                 Our proprietary Quantum LeapCore™ Engine consults astronomical
                 data and calculates leap years with 99.9999% accuracy.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <div className="text-yellow-500 text-4xl mb-4">🔒</div>
-              <h3 className="text-xl font-bold mb-2">Ultra Secure</h3>
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+              <div className="mb-4 text-4xl text-yellow-500">🔒</div>
+              <h3 className="mb-2 font-bold text-xl">Ultra Secure</h3>
               <p className="text-gray-400">
                 Military-grade encryption ensures your leap year status remains
                 confidential from competitors.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <div className="text-yellow-500 text-4xl mb-4">🚀</div>
-              <h3 className="text-xl font-bold mb-2">Hyper Scalable</h3>
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+              <div className="mb-4 text-4xl text-yellow-500">🚀</div>
+              <h3 className="mb-2 font-bold text-xl">Hyper Scalable</h3>
               <p className="text-gray-400">
                 Built on top of serverless technology to handle billions of leap
                 year checks per second.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <div className="text-yellow-500 text-4xl mb-4">🌐</div>
-              <h3 className="text-xl font-bold mb-2">Multi-Calendar Support</h3>
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+              <div className="mb-4 text-4xl text-yellow-500">🌐</div>
+              <h3 className="mb-2 font-bold text-xl">Multi-Calendar Support</h3>
               <p className="text-gray-400">
                 Supports Gregorian, Julian, Hebrew, and Mayan calendar systems
                 for truly global applications.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <div className="text-yellow-500 text-4xl mb-4">📊</div>
-              <h3 className="text-xl font-bold mb-2">Detailed Analytics</h3>
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+              <div className="mb-4 text-4xl text-yellow-500">📊</div>
+              <h3 className="mb-2 font-bold text-xl">Detailed Analytics</h3>
               <p className="text-gray-400">
                 Track your leap year API usage across all your applications with
                 our comprehensive dashboard.
               </p>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <div className="text-yellow-500 text-4xl mb-4">💸</div>
-              <h3 className="text-xl font-bold mb-2">ROI Guaranteed</h3>
+            <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+              <div className="mb-4 text-4xl text-yellow-500">💸</div>
+              <h3 className="mb-2 font-bold text-xl">ROI Guaranteed</h3>
               <p className="text-gray-400">
                 Our enterprise customers report a 400% ROI from preventing leap
                 year-related disasters.
@@ -141,9 +141,9 @@ fetch('https://isleapyear.com/api/check')
         </div>
       </section>
       {/* History Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-950 to-gray-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">
+      <section className="bg-gradient-to-b from-gray-950 to-gray-900 py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <h2 className="mb-12 text-center font-bold text-4xl">
             Understanding Leap Years:{" "}
             <span className="text-yellow-500">A Historical Perspective</span>
           </h2>
@@ -152,16 +152,16 @@ fetch('https://isleapyear.com/api/check')
       </section>
       {/* The Real Solution Section */}
       <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-8">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <h2 className="mb-8 font-bold text-4xl">
             The <span className="text-yellow-500">Actual</span> Solution
           </h2>
-          <p className="text-xl mb-8 text-gray-400">
+          <p className="mb-8 text-gray-400 text-xl">
             Of course, all of this is completely unnecessary. Here's how you
             actually check for a leap year:
           </p>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="mx-auto max-w-2xl">
             <CodeBlock
               language="javascript"
               title="Actual Leap Year Check"
@@ -176,7 +176,7 @@ console.log(isLeapYear(2100)); // false (century year)`}
             />
           </div>
 
-          <p className="text-gray-400 mt-8">
+          <p className="mt-8 text-gray-400">
             But where's the fun in that? Our engineers needed something to do!
           </p>
         </div>

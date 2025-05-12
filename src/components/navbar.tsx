@@ -3,9 +3,9 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <header className="bg-gray-900 border-b border-gray-800">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold">
+    <header className="border-gray-800 border-b bg-gray-900">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <Link href="/" className="font-bold text-xl">
           IsLeapYear.com
         </Link>
         <nav>

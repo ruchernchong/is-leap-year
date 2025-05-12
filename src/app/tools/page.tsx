@@ -10,20 +10,20 @@ export default function ToolsPage() {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-8">Leap Year Tools</h1>
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <h1 className="mb-8 font-bold text-4xl">Leap Year Tools</h1>
 
         <div className="mb-12">
-          <p className="text-xl mb-6 text-gray-300">
+          <p className="mb-6 text-gray-300 text-xl">
             Explore our collection of tools for working with leap years in your
             applications. These tools demonstrate the capabilities of our API
             and provide useful functionality for developers and users alike.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
+        <div className="mb-16 grid gap-12 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-bold mb-6">Leap Year Calculator</h2>
+            <h2 className="mb-6 font-bold text-2xl">Leap Year Calculator</h2>
             <p className="mb-6 text-gray-300">
               Check if any year is a leap year using our simple calculator. Just
               enter a year between 1582 (when the Gregorian calendar was
@@ -32,7 +32,7 @@ export default function ToolsPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-6">Leap Year Calendar</h2>
+            <h2 className="mb-6 font-bold text-2xl">Leap Year Calendar</h2>
             <p className="mb-6 text-gray-300">
               Visualize leap years across decades with our interactive calendar.
               Green cells indicate leap years, and you can navigate between
@@ -42,7 +42,7 @@ export default function ToolsPage() {
         </div>
 
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Batch Leap Year Testing</h2>
+          <h2 className="mb-6 font-bold text-2xl">Batch Leap Year Testing</h2>
           <p className="mb-6 text-gray-300">
             Need to check multiple years at once? Our batch tester lets you
             process up to 100 years simultaneously, perfect for data analysis or
@@ -51,27 +51,27 @@ export default function ToolsPage() {
         </div>
 
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Leap Year Facts</h2>
+          <h2 className="mb-6 font-bold text-2xl">Leap Year Facts</h2>
 
-          <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-            <h3 className="text-xl mb-4">Did you know?</h3>
+          <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+            <h3 className="mb-4 text-xl">Did you know?</h3>
 
             <ul className="space-y-4 text-gray-300">
               {leapYearFacts.map((fact) => (
                 <li key={fact} className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
+                  <span className="mr-2 text-yellow-500">•</span>
                   <span>{fact}</span>
                 </li>
               ))}
               <li className="flex items-start">
-                <span className="text-yellow-500 mr-2">•</span>
+                <span className="mr-2 text-yellow-500">•</span>
                 <span>
                   The Gregorian calendar has 97 leap years every 400 years,
                   which averages to a 365.2425-day year.
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-yellow-500 mr-2">•</span>
+                <span className="mr-2 text-yellow-500">•</span>
                 <span>
                   The actual length of the astronomical year is approximately
                   365.2422 days, which means the Gregorian calendar's leap year
@@ -79,7 +79,7 @@ export default function ToolsPage() {
                 </span>
               </li>
               <li className="flex items-start">
-                <span className="text-yellow-500 mr-2">•</span>
+                <span className="mr-2 text-yellow-500">•</span>
                 <span>
                   People born on February 29 are sometimes called "leaplings" or
                   "leap year babies."
@@ -90,11 +90,11 @@ export default function ToolsPage() {
         </div>
 
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Developer Code Snippets</h2>
+          <h2 className="mb-6 font-bold text-2xl">Developer Code Snippets</h2>
 
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl mb-4">JavaScript</h3>
+              <h3 className="mb-4 text-xl">JavaScript</h3>
               <CodeBlock
                 language="javascript"
                 title="JavaScript Leap Year Function"
@@ -105,7 +105,7 @@ export default function ToolsPage() {
             </div>
 
             <div>
-              <h3 className="text-xl mb-4">TypeScript</h3>
+              <h3 className="mb-4 text-xl">TypeScript</h3>
               <CodeBlock
                 language="typescript"
                 title="TypeScript Leap Year Function"
@@ -115,7 +115,7 @@ export default function ToolsPage() {
               />
             </div>
             <div>
-              <h3 className="text-xl mb-4">Using Our API</h3>
+              <h3 className="mb-4 text-xl">Using Our API</h3>
               <CodeBlock
                 language="javascript"
                 title="Fetch API Example"
@@ -136,7 +136,7 @@ fetch('https://isleapyear.com/api/check/2024')
         <div className="text-center">
           <Link
             href="/docs"
-            className="inline-block px-6 py-3 bg-yellow-600 hover:bg-yellow-700 rounded-md font-medium text-white"
+            className="inline-block rounded-md bg-yellow-600 px-6 py-3 font-medium text-white hover:bg-yellow-700"
           >
             View Full API Documentation
           </Link>

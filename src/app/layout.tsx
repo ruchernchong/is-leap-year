@@ -64,7 +64,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <main className="min-h-screen bg-gray-950 text-white flex flex-col">
+        <main className="flex min-h-screen flex-col bg-gray-950 text-white">
           <Navbar />
           <div className="flex-grow">{children}</div>
           <Footer />

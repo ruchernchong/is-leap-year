@@ -7,10 +7,10 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ quote, attribution }: TestimonialCardProps) {
   return (
-    <div className="bg-white/5 p-6 rounded-lg border border-gray-800">
-      <div className="text-lg italic mb-4">" {quote} "</div>
+    <div className="rounded-lg border border-gray-800 bg-white/5 p-6">
+      <div className="mb-4 text-lg italic">" {quote} "</div>
       {attribution && (
-        <div className="text-sm text-gray-400 text-right">- {attribution}</div>
+        <div className="text-right text-gray-400 text-sm">- {attribution}</div>
       )}
     </div>
   );
