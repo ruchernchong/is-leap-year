@@ -18,7 +18,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
+  metadataBase: new URL(`https://${DOMAIN_NAME}`),
+  title: {
+    default: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
+    template: `%s | ${BRAND_NAME}`,
+  },
   description:
     "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
   keywords:
@@ -28,19 +32,47 @@ export const metadata: Metadata = {
   creator: BRAND_NAME,
   publisher: BRAND_NAME,
   applicationName: BRAND_NAME,
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
-    url: `https://${DOMAIN_NAME}`,
+    url: "/",
     title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
     description:
       "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
     siteName: BRAND_NAME,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${BRAND_NAME} - Leap Year Detection API`,
+      },
+    ],
+    locale: "en_SG",
   },
   twitter: {
     card: "summary_large_image",
     title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
     description:
       "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
+    images: ["/opengraph-image.png"],
+    creator: "@isleapyearapp",
+    site: "@isleapyearapp",
   },
 };
 
@@ -50,7 +82,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar />
         <main className="container mx-auto px-4">{children}</main>

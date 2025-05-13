@@ -3,7 +3,7 @@ import { getLeapYearFacts } from "@/utils/leap-year";
 import Link from "next/link";
 import React from "react";
 
-export default function ToolsPage() {
+const Tools = () => {
   // Get some facts about the current year
   const currentYear = new Date().getFullYear();
   const leapYearFacts = getLeapYearFacts(currentYear);
@@ -141,4 +141,6 @@ fetch('https://isleapyear.app/api/check/2024')
       </div>
     </>
   );
-}
+};
+
+export default Tools;
