@@ -33,7 +33,7 @@ export default function Home() {
       </section>
       {/* Our Solution Section */}
       <section className="py-20">
-        <div className="grid gap-12 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <div>
             <h3 className="mb-4 font-bold text-2xl text-red-500">
               The API Endpoint
@@ -54,7 +54,6 @@ export default function Home() {
 }`}
             />
           </div>
-
           <div>
             <h3 className="mb-4 font-bold text-2xl text-red-500">
               Implementation Example
