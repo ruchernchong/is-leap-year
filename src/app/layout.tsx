@@ -30,26 +30,17 @@ export const metadata: Metadata = {
   applicationName: BRAND_NAME,
   openGraph: {
     type: "website",
-    url: "https://{DOMAIN_NAME}",
+    url: `https://${DOMAIN_NAME}`,
     title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
     description:
       "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
     siteName: BRAND_NAME,
-    images: [
-      {
-        url: `https://${DOMAIN_NAME}/api-banner.png`,
-        width: 1200,
-        height: 630,
-        alt: `${BRAND_NAME} API`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${BRAND_NAME} - The Ultimate Leap Year Detection API`,
     description:
       "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
-    images: ["https://{DOMAIN_NAME}/api-banner.png"],
   },
 };
 
