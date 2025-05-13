@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
 import { BRAND_NAME, DOMAIN_NAME } from "@/constants";
 import { Analytics } from "@vercel/analytics/next";
 import type React from "react";
@@ -61,11 +61,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <main className="container mx-auto px-4">
-          <Navbar />
-          <div>{children}</div>
-          <Footer />
-        </main>
+        <Navbar />
+        <main className="container mx-auto px-4">{children}</main>
+        <Footer />
         <Analytics />
       </body>
     </html>
