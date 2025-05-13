@@ -7,6 +7,9 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className="px-4 py-16 text-center">
+        <div className="mb-8 flex justify-center">
+          <img src="/logo.svg" alt="IsLeapYear Logo" className="h-32 w-32" />
+        </div>
         <h1 className="mb-6 font-bold text-5xl tracking-tight">
           Say Goodbye to Leap Year Confusion, Forever.
         </h1>

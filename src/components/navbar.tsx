@@ -42,8 +42,9 @@ export const Navbar = () => (
             </li>
           </ul>
         </div>
-        <Link href="/" className="btn btn-ghost font-bold text-xl">
-          {BRAND_NAME}
+        <Link href="/" className="btn btn-ghost flex items-center px-1">
+          <img src="/logo.svg" alt="IsLeapYear Logo" className="h-6 w-6" />
+          <span className="font-bold text-xl">{BRAND_NAME}</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
