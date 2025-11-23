@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  reactCompiler: true,
+  cacheComponents: true,
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  typedRoutes: true,
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+    typedEnv: true,
+  },
 };
 
 export default nextConfig;

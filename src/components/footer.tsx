@@ -1,13 +1,21 @@
-import { BRAND_NAME } from "@/constants";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { BRAND_NAME } from "@/constants";
 
-export const Footer = () => {
+export const Footer = async () => {
+  "use cache";
+
   return (
     <div className="bg-base-200">
       <footer className="footer sm:footer-horizontal container mx-auto bg-base-200 p-10 text-base-content">
         <aside>
-          <img src="/logo.svg" alt="IsLeapYear Logo" className="h-16 w-16" />
+          <Image
+            src="/logo.svg"
+            alt="IsLeapYear Logo"
+            width={64}
+            height={64}
+            className="size-16"
+          />
           <p className="font-bold">{BRAND_NAME}</p>
           <p className="max-w-xs">
             Providing reliable leap year detection since 2025. Our mission is to
