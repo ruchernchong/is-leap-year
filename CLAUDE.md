@@ -74,8 +74,12 @@ Biome configuration (biome.json):
 - **React**: Version 19.2.0 (latest)
 - **Styling**: Tailwind CSS 4.1.6 with DaisyUI 5.0.35 components
 - **TypeScript**: Version 5 with strict mode enabled
-- **Testing**: bun:test with 100% coverage (60 tests)
+- **Testing**: bun:test with 100% coverage (63 tests)
 - **Analytics**: Vercel Analytics 1.5.0 integrated
+- **Database**: Upstash Redis for usage tracking with realtime updates
+- **Realtime**: Upstash Realtime 0.3.0 for live request counter
+- **Icons**: Lucide React 0.554.0
+- **Validation**: Zod 4.1.13
 - **Font**: Geist Sans and Geist Mono (via next/font)
 - **Package Manager**: Bun (migrated from pnpm)
 - **Code Quality**: Biome 2.3.7 (linting & formatting)
@@ -93,6 +97,8 @@ src/
 │   │   │   └── route.ts   # Current year check (no params)
 │   │   ├── calendar/      # Multi-calendar support
 │   │   │   └── [type]/check/[year]/  # e.g., /api/calendar/julian/check/2024
+│   │   ├── realtime/      # Upstash Realtime endpoint for live updates
+│   │   │   └── route.ts   # GET handler for realtime connections
 │   │   └── stats/         # Statistics endpoints
 │   │       ├── range/     # Leap years in a date range
 │   │       └── distribution/  # Statistical distributions
@@ -111,12 +117,18 @@ src/
 │   ├── leap-year-history.tsx  # Historical timeline
 │   ├── testimonial-card.tsx   # Testimonial components
 │   ├── status-update.tsx      # Status indicators
+│   ├── requests-counter.tsx   # Live API request counter with realtime updates
 │   └── structured-data.tsx    # Schema.org JSON-LD wrapper
+├── lib/                   # Library code
+│   ├── redis.ts           # Upstash Redis client
+│   └── realtime.ts        # Upstash Realtime client with Zod schema
 ├── utils/                 # Utility functions
 │   ├── leap-year.ts       # Core leap year logic
 │   ├── leap-year.test.ts  # Leap year tests (45 tests)
-│   ├── api-response.ts    # Standardized API response helpers
-│   └── api-response.test.ts  # API response tests (14 tests)
+│   ├── response.ts        # Standardized API response helpers with usage tracking
+│   ├── response.test.ts   # API response tests (14 tests)
+│   ├── requests.ts        # Request tracking utilities (increment/get)
+│   └── requests.test.ts   # Request tracking tests (4 tests)
 └── constants/
     └── index.ts           # Global constants (BRAND_NAME, DOMAIN_NAME)
 ```
@@ -124,7 +136,7 @@ src/
 ### Key Architectural Patterns
 
 #### API Response Structure
-All API routes use standardized response helpers from `utils/api-response.ts`:
+All API routes use standardized response helpers from `utils/response.ts`:
 - `successResponse<T>(data: T)`: Returns 200 with data, status, and timestamp
 - `errorResponse(message: string, status?: number)`: Returns error with code and timestamp
 
@@ -174,6 +186,51 @@ TypeScript configured with `@/*` alias pointing to `src/*`:
 import { BRAND_NAME } from "@/constants";  // resolves to src/constants
 ```
 
+#### Request Tracking with Upstash Redis and Realtime
+The application tracks total API requests with Upstash Redis and provides live updates via Upstash Realtime:
+
+**Architecture:**
+- **Redis Client** (`lib/redis.ts`): Redis client using `@upstash/redis` with environment variable configuration
+- **Realtime Client** (`lib/realtime.ts`): Upstash Realtime client with Zod-validated schema for type-safe events
+- **Request Utilities** (`utils/requests.ts`):
+  - `incrementRequests()`: Fire-and-forget counter increment that emits realtime event
+  - `getTotalRequests()`: Retrieve total request count
+- **Automatic Tracking**: All successful API responses automatically increment the counter via `successResponse()` helper in `utils/response.ts`
+- **Realtime Endpoint** (`app/api/realtime/route.ts`): WebSocket endpoint for live updates using Upstash Realtime handler
+- **Display**: `RequestsCounter` component (client component) shows formatted count on homepage hero section with live updates using `useRealtime` hook
+
+**Redis Key:**
+- `requests:total`: Single global counter for all API requests
+
+**Realtime Events:**
+- `requests.count`: Emitted on every successful API request with updated count (validated by Zod schema)
+
+**Environment Variables:**
+- `UPSTASH_REDIS_REST_URL`: Upstash Redis REST API URL
+- `UPSTASH_REDIS_REST_TOKEN`: Upstash Redis REST API token
+
+**Setup (Production):**
+1. Create Upstash Redis database in Upstash Console (https://console.upstash.com)
+2. Copy environment variables from database dashboard
+3. Add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to Vercel project settings
+4. Deploy - tracking and realtime updates work automatically
+
+**Setup (Local Development):**
+1. Go to Upstash Console → Your Database → Details
+2. Copy REST API URL and Token
+3. Create `.env.local` in project root:
+   ```
+   UPSTASH_REDIS_REST_URL=your_url_here
+   UPSTASH_REDIS_REST_TOKEN=your_token_here
+   ```
+4. Start dev server - Redis and realtime will connect automatically
+
+**Error Handling:**
+- Redis failures don't block API responses (fire-and-forget)
+- Returns 0 if Redis unavailable
+- Logs errors to console for debugging
+- Realtime updates gracefully degrade if WebSocket connection fails
+
 ## Development Guidelines
 
 ### API Route Patterns
@@ -181,7 +238,7 @@ When creating new API routes:
 1. Use `async` functions with Next.js 16's async params pattern
 2. Always await dynamic params: `const { year } = await params;`
 3. Validate inputs and return appropriate error responses
-4. Use the standardized response helpers from `utils/api-response.ts`
+4. Use the standardized response helpers from `utils/response.ts`
 
 Example:
 ```typescript
@@ -267,7 +324,7 @@ src/
 ```
 
 ### Test Coverage
-- **Total Tests**: 60 passing
+- **Total Tests**: 63 passing
 - **Coverage**: 100% function and line coverage
 - **Test Pattern**: Uses `it("should...")` BDD-style assertions
 - **Runner**: Built-in bun:test (no additional dependencies required)
@@ -280,18 +337,25 @@ bun test:coverage     # Run with coverage report
 ```
 
 ### Test Categories
-1. **Leap Year Utilities** (`leap-year.test.ts`)
+1. **Leap Year Utilities** (`leap-year.test.ts` - 45 tests)
    - Gregorian, Julian, Hebrew, Chinese calendar tests
    - Century year edge cases
    - Next leap year calculations
    - Leap year facts generation
 
-2. **API Response Helpers** (`api-response.test.ts`)
+2. **API Response Helpers** (`response.test.ts` - 14 tests)
    - Success response format validation
    - Error response handling
    - Metadata and timestamp checks
+   - Request tracking integration
 
-3. **API Routes** (`route.test.ts`)
+3. **Request Tracking Utilities** (`requests.test.ts` - 4 tests)
+   - Counter increment with realtime event emission
+   - Request count retrieval
+   - Error handling for Redis failures
+   - Fire-and-forget behavior validation
+
+4. **API Routes** (`route.test.ts`)
    - Current year endpoint validation
    - Year parameter validation
    - Error handling for invalid inputs
