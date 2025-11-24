@@ -114,13 +114,6 @@ export function getLeapYearFacts(year: number): string[] {
       facts.push(historicalEvents[year]);
     }
 
-    // Leap year calculation fun facts
-    if (year % 100 === 0 && year % 400 !== 0) {
-      facts.push(
-        `${year} would be a leap year under the Julian calendar, but not in the Gregorian calendar because it's divisible by 100 but not by 400.`,
-      );
-    }
-
     // Future leap years
     if (year > 2025) {
       const today = new Date();
