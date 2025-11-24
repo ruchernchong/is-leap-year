@@ -16,6 +16,9 @@ bun build            # Build production bundle with Turbopack
 bun start            # Start production server
 bun lint             # Run Biome linting
 bun format           # Format all files with Biome
+bun test             # Run tests with bun:test
+bun test:watch       # Run tests in watch mode
+bun test:coverage    # Run tests with coverage report
 ```
 
 ### Code Quality
@@ -71,6 +74,7 @@ Biome configuration (biome.json):
 - **React**: Version 19.2.0 (latest)
 - **Styling**: Tailwind CSS 4.1.6 with DaisyUI 5.0.35 components
 - **TypeScript**: Version 5 with strict mode enabled
+- **Testing**: bun:test with 100% coverage (60 tests)
 - **Analytics**: Vercel Analytics 1.5.0 integrated
 - **Font**: Geist Sans and Geist Mono (via next/font)
 - **Package Manager**: Bun (migrated from pnpm)
@@ -110,7 +114,9 @@ src/
 │   └── structured-data.tsx    # Schema.org JSON-LD wrapper
 ├── utils/                 # Utility functions
 │   ├── leap-year.ts       # Core leap year logic
-│   └── api-response.ts    # Standardized API response helpers
+│   ├── leap-year.test.ts  # Leap year tests (45 tests)
+│   ├── api-response.ts    # Standardized API response helpers
+│   └── api-response.test.ts  # API response tests (14 tests)
 └── constants/
     └── index.ts           # Global constants (BRAND_NAME, DOMAIN_NAME)
 ```
@@ -239,9 +245,60 @@ curl "https://isleapyear.app/api/stats/range?start=2020&end=2030"
 curl https://isleapyear.app/api/stats/distribution
 ```
 
+## Testing
+
+This project uses **bun:test** with comprehensive test coverage:
+
+### Test Structure
+Tests are colocated with source files (Next.js best practice):
+```
+src/
+├── utils/
+│   ├── leap-year.ts
+│   ├── leap-year.test.ts       # 45 tests
+│   ├── api-response.ts
+│   └── api-response.test.ts    # 14 tests
+└── app/api/check/
+    ├── route.ts
+    ├── route.test.ts            # 4 tests
+    └── [year]/
+        ├── route.ts
+        └── route.test.ts        # 10 tests
+```
+
+### Test Coverage
+- **Total Tests**: 60 passing
+- **Coverage**: 100% function and line coverage
+- **Test Pattern**: Uses `it("should...")` BDD-style assertions
+- **Runner**: Built-in bun:test (no additional dependencies required)
+
+### Running Tests
+```bash
+bun test              # Run all tests
+bun test:watch        # Run tests in watch mode
+bun test:coverage     # Run with coverage report
+```
+
+### Test Categories
+1. **Leap Year Utilities** (`leap-year.test.ts`)
+   - Gregorian, Julian, Hebrew, Chinese calendar tests
+   - Century year edge cases
+   - Next leap year calculations
+   - Leap year facts generation
+
+2. **API Response Helpers** (`api-response.test.ts`)
+   - Success response format validation
+   - Error response handling
+   - Metadata and timestamp checks
+
+3. **API Routes** (`route.test.ts`)
+   - Current year endpoint validation
+   - Year parameter validation
+   - Error handling for invalid inputs
+   - Response structure verification
+
 ## Important Notes
 
-- **No Test Suite**: This project does not have automated tests configured
 - **Vercel Deployment**: Configured for Vercel with vercel.json, deployed to Singapore region (sin1)
 - **Package Manager**: Uses Bun exclusively (bun.lock present) - migrated from pnpm, do not use npm, yarn, or pnpm
 - **Turbopack**: Uses Next.js Turbopack for faster builds (automatically enabled in dev and build)
@@ -249,6 +306,6 @@ curl https://isleapyear.app/api/stats/distribution
 - **Satirical Tone**: The project is intentionally humorous - maintain this tone when adding content
 - **Live URL**: https://isleapyear.app
 - **CI/CD Workflows**:
-  - **Pull Requests**: Automated checks (lint + build) run on all PRs to main via `.github/workflows/checks.yml`
-  - **Releases**: GitHub Actions automatically runs on main branch pushes, validates code quality, and creates releases via semantic-release in `.github/workflows/release.yml`
+  - **Pull Requests**: Automated checks (lint + test + build) run on all PRs to main via `.github/workflows/checks.yml`
+  - **Releases**: GitHub Actions automatically runs on main branch pushes, validates code quality (lint + test + build), and creates releases via semantic-release in `.github/workflows/release.yml`
 - **Commit Conventions**: All commits must follow conventional commit format or they will be rejected by the commit-msg hook

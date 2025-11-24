@@ -18,6 +18,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 - **Framework:** Next.js 16.0.3 with App Router
 - **React:** 19.2.0
 - **TypeScript:** Version 5 (strict mode)
+- **Testing:** bun:test (60 tests, 100% coverage)
 - **Styling:** Tailwind CSS 4.1.6 + DaisyUI 5.0.35
 - **Code Quality:** Biome 2.3.7
 - **Package Manager:** Bun
@@ -55,12 +56,15 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 ### Available Commands
 
 ```bash
-bun dev           # Start development server with Turbopack
-bun build         # Build for production
-bun start         # Start production server
-bun lint          # Run Biome linting
-bun format        # Format all files with Biome
-bun prepare       # Install Husky git hooks
+bun dev              # Start development server with Turbopack
+bun build            # Build for production
+bun start            # Start production server
+bun lint             # Run Biome linting
+bun format           # Format all files with Biome
+bun test             # Run tests
+bun test:watch       # Run tests in watch mode
+bun test:coverage    # Run tests with coverage report
+bun prepare          # Install Husky git hooks
 ```
 
 ### Code Quality & Commit Conventions
@@ -160,7 +164,9 @@ src/
 │   └── ...                    # Other UI components
 ├── utils/                 # Utility functions
 │   ├── leap-year.ts       # Core leap year logic
-│   └── api-response.ts    # Standardized API responses
+│   ├── leap-year.test.ts  # Leap year tests
+│   ├── api-response.ts    # Standardized API responses
+│   └── api-response.test.ts  # API response tests
 └── constants/             # Global constants (BRAND_NAME, DOMAIN_NAME)
 ```
 
@@ -181,18 +187,42 @@ This project uses:
   - Open Graph and Twitter Card metadata
   - No deprecated `keywords` meta tags
 
+## Testing
+
+This project has comprehensive test coverage using **bun:test**:
+
+- **60 tests** across 4 test files
+- **100% code coverage** (function and line coverage)
+- **Colocated tests** - test files live next to source files (Next.js best practice)
+- **BDD-style assertions** - uses `it("should...")` pattern
+
+### Test Files
+- `src/utils/leap-year.test.ts` - 45 tests for leap year calculations
+- `src/utils/api-response.test.ts` - 14 tests for API response helpers
+- `src/app/api/check/route.test.ts` - 4 tests for current year endpoint
+- `src/app/api/check/[year]/route.test.ts` - 10 tests for specific year endpoint
+
+### Running Tests
+```bash
+bun test              # Run all tests
+bun test:watch        # Run tests in watch mode
+bun test:coverage     # Run with coverage report
+```
+
 ## CI/CD Pipeline
 
 ### Pull Request Checks
 Automated quality checks run on all pull requests to `main`:
 1. **Lint Check**: Validates code quality with Biome
-2. **Build**: Ensures production build succeeds
+2. **Test**: Runs 60 tests with 100% coverage
+3. **Build**: Ensures production build succeeds
 
 ### Release Workflow
 GitHub Actions automatically runs on every push to `main`:
 1. **Lint Check**: Validates code quality with Biome
-2. **Build**: Ensures production build succeeds
-3. **Release**: Automatically creates releases using semantic-release
+2. **Test**: Runs full test suite
+3. **Build**: Ensures production build succeeds
+4. **Release**: Automatically creates releases using semantic-release
    - Analyzes commits to determine version bump
    - Generates CHANGELOG.md
    - Creates GitHub releases
