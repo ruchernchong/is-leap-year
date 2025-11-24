@@ -162,17 +162,7 @@ This project uses:
 - TypeScript path aliases: `@/*` → `src/*`
 - Server Components by default
 
-## Deployment
-
-Deployed on [Vercel](https://vercel.com) with configuration in `vercel.json`:
-
-```json
-{
-  "regions": ["sin1"]
-}
-```
-
-### CI/CD Pipeline
+## CI/CD Pipeline
 
 GitHub Actions automatically runs on every push to `main`:
 1. **Lint Check**: Validates code quality with Biome
@@ -182,8 +172,6 @@ GitHub Actions automatically runs on every push to `main`:
    - Generates CHANGELOG.md
    - Creates GitHub releases
    - Updates package.json version
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/is-leap-year)
 
 ## Learn More
 
