@@ -65,7 +65,7 @@ export const Navbar = () => (
         </ul>
       </div>
       <div className="navbar-end">
-        <label className="swap swap-rotate">
+        <label className="swap swap-rotate" aria-label="Toggle theme">
           <input type="checkbox" className="theme-controller" value="dim" />
           <svg
             className="swap-on h-5 w-5 fill-current"

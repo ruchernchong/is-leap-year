@@ -55,9 +55,8 @@ const HomePage = () => (
         Say Goodbye to Leap Year Confusion, Forever.
       </h1>
       <p className="mb-12 text-2xl">
-        Every four years, millions of developers face the same crisis:
+        Every four years, millions of developers face the same crisis:{" "}
         <span className="font-bold text-red-500">
-          {" "}
           broken date calculations due to leap years
         </span>
         .
