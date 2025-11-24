@@ -1,5 +1,5 @@
-import { DOMAIN_NAME } from "@/constants";
 import type { MetadataRoute } from "next";
+import { DOMAIN_NAME } from "@/constants";
 
 const robots = (): MetadataRoute.Robots => ({
   rules: {

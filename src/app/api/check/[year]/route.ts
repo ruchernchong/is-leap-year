@@ -1,12 +1,12 @@
+import type { NextRequest } from "next/server";
 import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   findNextGregorianLeapYear,
   isGregorianLeapYear,
 } from "@/utils/leap-year";
-import type { NextRequest } from "next/server";
 
 export const GET = async (
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ year: string }> },
 ) => {
   const { year: yearParam } = await params;

@@ -1,11 +1,11 @@
+import type { NextRequest } from "next/server";
 import { successResponse } from "@/utils/api-response";
 import {
   findNextGregorianLeapYear,
   isGregorianLeapYear,
 } from "@/utils/leap-year";
-import type { NextRequest } from "next/server";
 
-export const GET = async (request: NextRequest) => {
+export const GET = async (_request: NextRequest) => {
   const year = new Date().getFullYear();
 
   const isLeapYear = isGregorianLeapYear(year);

@@ -1,3 +1,4 @@
+import type { NextRequest } from "next/server";
 import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   getDaysInFebruary,
@@ -6,10 +7,9 @@ import {
   isHebrewLeapYear,
   isJulianLeapYear,
 } from "@/utils/leap-year";
-import type { NextRequest } from "next/server";
 
 export const GET = async (
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ type: string; year: string }> },
 ) => {
   const { type, year: yearParam } = await params;
