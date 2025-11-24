@@ -2,106 +2,58 @@ import { describe, expect, it } from "bun:test";
 import { NextRequest } from "next/server";
 import { GET } from "./route";
 
+const checkYear = async (year: string) => {
+  const request = new NextRequest(`http://localhost:3000/api/check/${year}`);
+  const params = Promise.resolve({ year });
+  const response = await GET(request, { params });
+  const json = await response.json();
+  return { response, json };
+};
+
 describe("GET /api/check/[year]", () => {
-  it("should return true for a leap year", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/2024");
-    const params = Promise.resolve({ year: "2024" });
-    const response = await GET(request, { params });
-    const json = await response.json();
+  describe("valid leap year calculations", () => {
+    const validCases = [
+      { year: "2024", isLeap: true, days: 29, nextLeap: 2028 },
+      { year: "2023", isLeap: false, days: 28, nextLeap: 2024 },
+      { year: "1900", isLeap: false, days: 28, nextLeap: 1904 },
+      { year: "2000", isLeap: true, days: 29, nextLeap: 2004 },
+    ];
 
-    expect(response.status).toBe(200);
-    expect(json.data.isLeapYear).toBe(true);
-    expect(json.data.yearChecked).toBe(2024);
-    expect(json.data.daysInFebruary).toBe(29);
+    validCases.forEach(({ year, isLeap, days, nextLeap }) => {
+      it(`should correctly identify ${year} as ${isLeap ? "leap" : "non-leap"} year`, async () => {
+        const { response, json } = await checkYear(year);
+
+        expect(response.status).toBe(200);
+        expect(json.data.isLeapYear).toBe(isLeap);
+        expect(json.data.yearChecked).toBe(Number(year));
+        expect(json.data.daysInFebruary).toBe(days);
+        expect(json.data.nextLeapYear).toBe(nextLeap);
+      });
+    });
   });
 
-  it("should return false for a non-leap year", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/2023");
-    const params = Promise.resolve({ year: "2023" });
-    const response = await GET(request, { params });
-    const json = await response.json();
+  describe("error handling", () => {
+    const errorCases = [
+      { year: "abc", errorText: "Gregorian calendar" },
+      { year: "1500", errorText: "1582" },
+      { year: "10000", errorText: "" },
+    ];
 
-    expect(response.status).toBe(200);
-    expect(json.data.isLeapYear).toBe(false);
-    expect(json.data.yearChecked).toBe(2023);
-    expect(json.data.daysInFebruary).toBe(28);
-  });
+    errorCases.forEach(({ year, errorText }) => {
+      it(`should return error for invalid year: ${year}`, async () => {
+        const { response, json } = await checkYear(year);
 
-  it("should return false for century years not divisible by 400", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/1900");
-    const params = Promise.resolve({ year: "1900" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(json.data.isLeapYear).toBe(false);
-    expect(json.data.daysInFebruary).toBe(28);
-  });
-
-  it("should return true for years divisible by 400", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/2000");
-    const params = Promise.resolve({ year: "2000" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(json.data.isLeapYear).toBe(true);
-    expect(json.data.daysInFebruary).toBe(29);
-  });
-
-  it("should return error for invalid year parameter", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/abc");
-    const params = Promise.resolve({ year: "abc" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(json.error).toBeDefined();
-    expect(json.error.message).toContain("Gregorian calendar");
-  });
-
-  it("should return error for years before 1582", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/1500");
-    const params = Promise.resolve({ year: "1500" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(json.error).toBeDefined();
-    expect(json.error.message).toContain("1582");
-  });
-
-  it("should return error for years after 9999", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/10000");
-    const params = Promise.resolve({ year: "10000" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(response.status).toBe(400);
-    expect(json.error).toBeDefined();
-  });
-
-  it("should calculate next leap year correctly for leap years", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/2024");
-    const params = Promise.resolve({ year: "2024" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(json.data.nextLeapYear).toBe(2028);
-  });
-
-  it("should calculate next leap year correctly for non-leap years", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/2023");
-    const params = Promise.resolve({ year: "2023" });
-    const response = await GET(request, { params });
-    const json = await response.json();
-
-    expect(json.data.nextLeapYear).toBe(2024);
+        expect(response.status).toBe(400);
+        expect(json.error).toBeDefined();
+        if (errorText) {
+          expect(json.error.message).toContain(errorText);
+        }
+      });
+    });
   });
 
   it("should include metadata with timestamp", async () => {
-    const request = new NextRequest("http://localhost:3000/api/check/2024");
-    const params = Promise.resolve({ year: "2024" });
-    const response = await GET(request, { params });
-    const json = await response.json();
+    const { json } = await checkYear("2024");
 
     expect(json.meta).toBeDefined();
     expect(json.meta.timestamp).toBeDefined();
