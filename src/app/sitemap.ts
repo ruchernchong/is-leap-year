@@ -3,19 +3,32 @@ import { DOMAIN_NAME } from "@/constants";
 
 const sitemap = (): MetadataRoute.Sitemap => {
   const baseUrl = `https://${DOMAIN_NAME}`;
+  const lastModified = new Date();
 
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 1,
     },
     {
       url: `${baseUrl}/docs`,
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/tools`,
-      lastModified: new Date(),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.5,
     },
   ];
 };
