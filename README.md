@@ -14,11 +14,14 @@ A satirical high-performance leap year detection API that solves the world's mos
 
 ## Tech Stack
 
-- **Framework:** Next.js 15.3.2 with App Router
-- **React:** 19.0.0
-- **TypeScript:** Strict mode
-- **Styling:** Tailwind CSS 4.x + DaisyUI
-- **Code Quality:** Biome 2.1.2
+- **Framework:** Next.js 16.0.3 with App Router
+- **React:** 19.2.0
+- **TypeScript:** Version 5 (strict mode)
+- **Styling:** Tailwind CSS 4.1.6 + DaisyUI 5.0.35
+- **Code Quality:** Biome 2.3.7
+- **Package Manager:** Bun
+- **Git Hooks:** Husky 9.1.7 + lint-staged
+- **CI/CD:** GitHub Actions + semantic-release
 - **Analytics:** Vercel Analytics
 - **Deployment:** Vercel (Singapore region)
 
@@ -27,7 +30,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 ### Prerequisites
 
 - Node.js 20+
-- pnpm (recommended package manager)
+- Bun (recommended package manager)
 
 ### Installation
 
@@ -37,10 +40,13 @@ git clone https://github.com/yourusername/is-leap-year.git
 cd is-leap-year
 
 # Install dependencies
-pnpm install
+bun install
+
+# Install git hooks
+bun prepare
 
 # Run the development server
-pnpm dev
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
@@ -48,21 +54,32 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 ### Available Commands
 
 ```bash
-pnpm dev          # Start development server with Turbopack
-pnpm build        # Build for production
-pnpm start        # Start production server
-pnpm lint         # Run Next.js linting
+bun dev           # Start development server with Turbopack
+bun build         # Build for production
+bun start         # Start production server
+bun lint          # Run Biome linting
+bun format        # Format all files with Biome
+bun prepare       # Install Husky git hooks
 ```
 
-### Code Quality
+### Code Quality & Commit Conventions
 
 This project uses [Biome](https://biomejs.dev/) for linting and formatting:
 
 ```bash
-pnpm biome check .              # Check all files
-pnpm biome check --write .      # Check and auto-fix
-pnpm biome format --write .     # Format all files
+bun biome check .              # Check all files
+bun biome check --write .      # Check and auto-fix
+bun biome format --write .     # Format all files
 ```
+
+**Important:** Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) format:
+- Valid types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- Format: `type(scope): subject` (max 100 chars)
+- Example: `feat(api): add batch year validation endpoint`
+
+Git hooks automatically:
+- Format staged files before commit (lint-staged)
+- Validate commit messages (commitlint)
 
 ## API Documentation
 
@@ -154,6 +171,17 @@ Deployed on [Vercel](https://vercel.com) with configuration in `vercel.json`:
   "regions": ["sin1"]
 }
 ```
+
+### CI/CD Pipeline
+
+GitHub Actions automatically runs on every push to `main`:
+1. **Lint Check**: Validates code quality with Biome
+2. **Build**: Ensures production build succeeds
+3. **Release**: Automatically creates releases using semantic-release
+   - Analyzes commits to determine version bump
+   - Generates CHANGELOG.md
+   - Creates GitHub releases
+   - Updates package.json version
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/is-leap-year)
 

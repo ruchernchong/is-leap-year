@@ -9,21 +9,49 @@ IsLeapYear is a satirical Next.js web application that provides a "high-performa
 ## Common Commands
 
 ### Development
-This project uses **pnpm** as the package manager:
+This project uses **Bun** as the package manager:
 ```bash
-pnpm dev             # Start Next.js dev server with Turbopack
-pnpm build           # Build production bundle with Turbopack
-pnpm start           # Start production server
-pnpm lint            # Run Next.js linting
+bun dev              # Start Next.js dev server with Turbopack
+bun build            # Build production bundle with Turbopack
+bun start            # Start production server
+bun lint             # Run Biome linting
+bun format           # Format all files with Biome
 ```
 
 ### Code Quality
-The project uses Biome 2.1.2 for linting and formatting (not ESLint/Prettier):
+The project uses Biome 2.3.7 for linting and formatting (not ESLint/Prettier):
 ```bash
-pnpm biome check .              # Check all files
-pnpm biome check --write .      # Check and auto-fix
-pnpm biome format --write .     # Format all files
+bun biome check .              # Check all files
+bun biome check --write .      # Check and auto-fix
+bun biome format --write .     # Format all files
 ```
+
+### Git Hooks & Automation
+The project uses Husky for git hooks with automated workflows:
+```bash
+bun prepare          # Install Husky hooks
+```
+
+Configured hooks:
+- **pre-commit**: Runs lint-staged (formats staged files with Biome)
+- **commit-msg**: Validates commit messages with commitlint
+
+Commitlint enforces conventional commits:
+- Valid types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- Format: `type(scope): subject` (max 100 chars)
+- Example: `feat(api): add batch year validation endpoint`
+
+### Release Automation
+Uses semantic-release for automated versioning and changelog generation:
+```bash
+bun semantic-release # Run semantic release (CI only)
+```
+
+Configured to:
+- Analyze commits and determine version bump
+- Generate CHANGELOG.md
+- Create GitHub releases
+- Commit updated files with `chore(release): version [skip ci]`
 
 Biome configuration (biome.json):
 - Uses spaces for indentation
@@ -34,12 +62,16 @@ Biome configuration (biome.json):
 ## Architecture
 
 ### Tech Stack
-- **Framework**: Next.js 15.3.2 with App Router
-- **React**: Version 19 (latest)
-- **Styling**: Tailwind CSS 4.x with DaisyUI components
-- **TypeScript**: Strict mode enabled
-- **Analytics**: Vercel Analytics integrated
+- **Framework**: Next.js 16.0.3 with App Router
+- **React**: Version 19.2.0 (latest)
+- **Styling**: Tailwind CSS 4.1.6 with DaisyUI 5.0.35 components
+- **TypeScript**: Version 5 with strict mode enabled
+- **Analytics**: Vercel Analytics 1.5.0 integrated
 - **Font**: Geist Sans and Geist Mono (via next/font)
+- **Package Manager**: Bun (migrated from pnpm)
+- **Code Quality**: Biome 2.3.7 (linting & formatting)
+- **Git Hooks**: Husky 9.1.7 + lint-staged 16.2.7
+- **Release**: semantic-release 25.0.2 + commitlint
 
 ### Directory Structure
 ```
@@ -188,8 +220,10 @@ curl https://isleapyear.app/api/stats/distribution
 
 - **No Test Suite**: This project does not have automated tests configured
 - **Vercel Deployment**: Configured for Vercel with vercel.json, deployed to Singapore region (sin1)
-- **Package Manager**: Uses pnpm exclusively (pnpm-lock.yaml present) - do not use npm or yarn
-- **Turbopack**: Uses Next.js Turbopack for faster builds (--turbopack flag in all build commands)
+- **Package Manager**: Uses Bun exclusively (bun.lock present) - migrated from pnpm, do not use npm, yarn, or pnpm
+- **Turbopack**: Uses Next.js Turbopack for faster builds (automatically enabled in dev and build)
 - **Analytics**: Vercel Analytics is pre-integrated in the root layout
 - **Satirical Tone**: The project is intentionally humorous - maintain this tone when adding content
 - **Live URL**: https://isleapyear.app
+- **Automated Releases**: GitHub Actions workflow automatically runs on main branch pushes, validates code quality (lint + build), and creates releases via semantic-release
+- **Commit Conventions**: All commits must follow conventional commit format or they will be rejected by the commit-msg hook
