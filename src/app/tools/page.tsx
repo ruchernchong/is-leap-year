@@ -29,8 +29,6 @@ export const metadata: Metadata = {
 };
 
 const ToolsPage = async () => {
-  "use cache";
-
   // Get some facts about the current year
   const currentYear = new Date().getFullYear();
   const leapYearFacts = getLeapYearFacts(currentYear);

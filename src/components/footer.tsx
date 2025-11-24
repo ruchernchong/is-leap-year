@@ -3,8 +3,6 @@ import Link from "next/link";
 import { BRAND_NAME } from "@/constants";
 
 export const Footer = async () => {
-  "use cache";
-
   return (
     <div className="bg-base-200">
       <footer className="footer sm:footer-horizontal container mx-auto bg-base-200 p-10 text-base-content">
