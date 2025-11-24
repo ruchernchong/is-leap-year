@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-IsLeapYear is a satirical Next.js web application that provides a "high-performance leap year detection API" - a humorous take on over-engineered solutions for simple problems. While presented with tongue-in-cheek marketing (Quantum LeapCore™, military-grade encryption), it's a fully functional Next.js 15 application with React 19, demonstrating modern web development practices.
+IsLeapYear is a satirical Next.js web application that provides a "high-performance leap year detection API" - a humorous take on over-engineered solutions for simple problems. While presented with tongue-in-cheek marketing (Quantum LeapCore™, military-grade encryption), it's a fully functional Next.js 16 application with React 19, demonstrating modern web development practices.
 
 ## Common Commands
 
@@ -140,10 +140,27 @@ Core leap year logic is in `utils/leap-year.ts` with calendar system support:
 Year validation for Gregorian: 1582-9999 (Gregorian calendar introduction)
 
 #### Metadata and SEO
-- Root layout (`app/layout.tsx`) defines base metadata
-- Each page exports `metadata` object for page-specific SEO
-- Uses schema-dts for type-safe Schema.org structured data
-- `StructuredData` component wraps JSON-LD scripts
+The project follows modern SEO best practices:
+- **Root Layout** (`app/layout.tsx`): Defines base metadata (site-wide defaults)
+  - Title template for consistent page titles
+  - Default Open Graph and Twitter Card metadata
+  - Canonical URLs and language alternatives
+  - No `keywords` meta tag (deprecated, ignored by search engines)
+- **Page-Specific Metadata**: Each page exports its own `metadata` object
+  - Unique titles and descriptions
+  - Page-specific Open Graph/Twitter metadata
+  - Canonical URLs for each route
+- **Structured Data (JSON-LD)**: Uses `schema-dts` for type-safe Schema.org markup
+  - Homepage: `SoftwareApplication` schema
+  - Tools: `WebPage` schema
+  - Docs: `TechArticle` schema
+  - Contact: `ContactPage` schema
+  - Rendered via `StructuredData` component as `<script type="application/ld+json">`
+- **SEO Assets**:
+  - Dynamic sitemap at `/sitemap.xml`
+  - Robots.txt configuration
+  - Open Graph image at `/opengraph-image.png`
+  - PWA manifest
 
 #### Path Aliasing
 TypeScript configured with `@/*` alias pointing to `src/*`:
@@ -155,7 +172,7 @@ import { BRAND_NAME } from "@/constants";  // resolves to src/constants
 
 ### API Route Patterns
 When creating new API routes:
-1. Use `async` functions with Next.js 15's async params pattern
+1. Use `async` functions with Next.js 16's async params pattern
 2. Always await dynamic params: `const { year } = await params;`
 3. Validate inputs and return appropriate error responses
 4. Use the standardized response helpers from `utils/api-response.ts`
@@ -182,6 +199,7 @@ export const GET = async (
 - Leverage Tailwind CSS and DaisyUI utility classes
 - Keep components in the `src/components/` directory
 - Use server components by default (this is Next.js App Router)
+- **Naming Convention**: Page components should be named descriptively (e.g., `HomePage`, `DocsPage`, `ToolsPage`, `ContactPage`)
 
 ### Styling
 - Tailwind CSS 4.x with PostCSS

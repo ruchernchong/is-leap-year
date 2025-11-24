@@ -25,8 +25,6 @@ export const metadata: Metadata = {
   },
   description:
     "High-performance leap year detection API for developers. Integrate our reliable leap year service into your applications for accurate date calculations.",
-  keywords:
-    "leap year, leap year api, date calculation, calendar api, leap year detection, gregorian calendar, julian calendar, february 29",
   authors: [{ name: `${BRAND_NAME} Team` }],
   category: "Technology",
   creator: BRAND_NAME,

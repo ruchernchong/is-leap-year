@@ -36,7 +36,7 @@ const structuredData: WithContext<SoftwareApplication> = {
   softwareVersion: packageJson.version,
 };
 
-const Home = () => (
+const HomePage = () => (
   <>
     <StructuredData data={structuredData} />
 
@@ -217,4 +217,4 @@ const Home = () => (
   </>
 );
 
-export default Home;
+export default HomePage;

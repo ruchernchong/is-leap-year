@@ -1,6 +1,32 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import type { WebPage, WithContext } from "schema-dts";
 import { CodeBlock } from "@/components/code-block";
+import { StructuredData } from "@/components/structured-data";
+import { BRAND_NAME, DOMAIN_NAME } from "@/constants";
 import { getLeapYearFacts } from "@/utils/leap-year";
+
+export const metadata: Metadata = {
+  title: "Leap Year Tools & Calculator",
+  description:
+    "Free leap year calculator, batch tester, and developer code snippets. Test multiple years, explore leap year facts, and integrate our API into your applications.",
+  openGraph: {
+    title: `Leap Year Tools & Calculator | ${BRAND_NAME}`,
+    description:
+      "Free leap year calculator, batch tester, and developer code snippets. Test multiple years and explore leap year facts.",
+    url: "/tools",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Leap Year Tools & Calculator | ${BRAND_NAME}`,
+    description:
+      "Free leap year calculator, batch tester, and developer code snippets. Test multiple years and explore leap year facts.",
+  },
+  alternates: {
+    canonical: "/tools",
+  },
+};
 
 const ToolsPage = async () => {
   "use cache";
@@ -9,8 +35,23 @@ const ToolsPage = async () => {
   const currentYear = new Date().getFullYear();
   const leapYearFacts = getLeapYearFacts(currentYear);
 
+  const structuredData: WithContext<WebPage> = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Leap Year Tools & Calculator",
+    description:
+      "Free leap year calculator, batch tester, and developer code snippets for developers.",
+    url: `https://${DOMAIN_NAME}/tools`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: BRAND_NAME,
+      url: `https://${DOMAIN_NAME}`,
+    },
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
+      <StructuredData data={structuredData} />
       <h1 className="mb-8 font-bold text-4xl">Leap Year Tools</h1>
 
       <div className="mb-12">

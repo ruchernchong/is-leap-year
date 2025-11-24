@@ -11,6 +11,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 - 🌐 **Multi-Calendar Support** - Gregorian, Julian, Hebrew, and Chinese calendars
 - 📊 **Comprehensive API** - RESTful endpoints for all your leap year needs
 - ⚡ **Lightning Fast** - Built with Next.js 16 and Turbopack
+- 🔍 **SEO Optimized** - Full structured data (JSON-LD) and Open Graph metadata
 
 ## Tech Stack
 
@@ -36,7 +37,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/is-leap-year.git
+git clone https://github.com/ruchernchong/is-leap-year.git
 cd is-leap-year
 
 # Install dependencies
@@ -141,13 +142,26 @@ For full API documentation, visit [https://isleapyear.app/docs](https://isleapye
 
 ```
 src/
-├── app/              # Next.js App Router
-│   ├── api/         # API routes
-│   ├── docs/        # Documentation page
-│   └── tools/       # Interactive tools
-├── components/       # React components
-├── utils/           # Utility functions (leap year logic)
-└── constants/       # Global constants
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   │   ├── check/         # Leap year check endpoints
+│   │   ├── calendar/      # Multi-calendar support
+│   │   └── stats/         # Statistics endpoints
+│   ├── docs/              # API documentation page
+│   ├── tools/             # Interactive tools page
+│   ├── contact/           # Contact page
+│   ├── layout.tsx         # Root layout with metadata
+│   ├── page.tsx           # Homepage
+│   ├── manifest.ts        # PWA manifest
+│   ├── sitemap.ts         # Dynamic sitemap
+│   └── robots.ts          # Robots.txt config
+├── components/            # React components
+│   ├── structured-data.tsx    # JSON-LD wrapper
+│   └── ...                    # Other UI components
+├── utils/                 # Utility functions
+│   ├── leap-year.ts       # Core leap year logic
+│   └── api-response.ts    # Standardized API responses
+└── constants/             # Global constants (BRAND_NAME, DOMAIN_NAME)
 ```
 
 ## Development
@@ -161,6 +175,11 @@ This project uses:
 - [Geist Font](https://vercel.com/font) via `next/font`
 - TypeScript path aliases: `@/*` → `src/*`
 - Server Components by default
+- Modern SEO practices:
+  - Structured data (JSON-LD) using `schema-dts`
+  - Dynamic sitemap and robots.txt
+  - Open Graph and Twitter Card metadata
+  - No deprecated `keywords` meta tags
 
 ## CI/CD Pipeline
 
