@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
-import { errorResponse, successResponse } from "@/utils/api-response";
 import { isGregorianLeapYear } from "@/utils/leap-year";
+import { errorResponse, successResponse } from "@/utils/response";
 
 interface DecadeData {
   decade: string;

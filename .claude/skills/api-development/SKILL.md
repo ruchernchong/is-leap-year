@@ -41,7 +41,7 @@ export const GET = async (
 
 ### Response Helpers
 
-Located in `src/utils/api-response.ts`:
+Located in `src/utils/response.ts`:
 
 - `successResponse<T>(data: T)` - Returns 200 with standardized format
 - `errorResponse(message: string, status?: number)` - Returns error response
@@ -95,7 +95,7 @@ curl http://localhost:3000/api/calendar/gregorian/check/2024
 1. Determine the route path (e.g., `/api/check/validate/[year]`)
 2. Create the directory structure
 3. Create `route.ts` with GET/POST handlers
-4. Use response helpers from `utils/api-response.ts`
+4. Use response helpers from `utils/response.ts`
 5. Validate all inputs
 6. Test with curl commands
 
@@ -121,6 +121,6 @@ Use `errorResponse()` helper for consistency.
 - Always use `async` functions for route handlers
 - Always `await params` in dynamic routes (Next.js 15 requirement)
 - Use TypeScript for all routes
-- Import response helpers: `import { successResponse, errorResponse } from "@/utils/api-response"`
+- Import response helpers: `import { successResponse, errorResponse } from "@/utils/response"`
 - Test locally before deployment
 - Follow the satirical tone for error messages when appropriate

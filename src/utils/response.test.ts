@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { errorResponse, successResponse } from "./api-response";
+import { errorResponse, successResponse } from "./response";
 
 describe("successResponse", () => {
   it("should return a NextResponse with status 200", async () => {

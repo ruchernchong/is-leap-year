@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { incrementRequests } from "./requests";
 
 type ApiResponse<T> = {
   status: number;
@@ -12,8 +13,10 @@ type ApiResponse<T> = {
   };
 };
 
-export const successResponse = <T>(data: T): NextResponse<ApiResponse<T>> =>
-  NextResponse.json(
+export const successResponse = <T>(data: T): NextResponse<ApiResponse<T>> => {
+  incrementRequests();
+
+  return NextResponse.json(
     {
       status: 200,
       data,
@@ -23,6 +26,7 @@ export const successResponse = <T>(data: T): NextResponse<ApiResponse<T>> =>
     },
     { status: 200 },
   );
+};
 
 export const errorResponse = (
   message: string,

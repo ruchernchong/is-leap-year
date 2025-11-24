@@ -1,9 +1,9 @@
 import type { NextRequest } from "next/server";
-import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   findNextGregorianLeapYear,
   isGregorianLeapYear,
 } from "@/utils/leap-year";
+import { errorResponse, successResponse } from "@/utils/response";
 
 export const GET = async (
   _request: NextRequest,

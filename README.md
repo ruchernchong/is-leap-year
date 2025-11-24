@@ -11,6 +11,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 - 🌐 **Multi-Calendar Support** - Gregorian, Julian, Hebrew, and Chinese calendars
 - 📊 **Comprehensive API** - RESTful endpoints for all your leap year needs
 - ⚡ **Lightning Fast** - Built with Next.js 16 and Turbopack
+- 📈 **Live Request Tracking** - Real-time API usage counter with Upstash Redis and WebSocket updates
 - 🔍 **SEO Optimized** - Full structured data (JSON-LD) and Open Graph metadata
 
 ## Tech Stack
@@ -18,8 +19,12 @@ A satirical high-performance leap year detection API that solves the world's mos
 - **Framework:** Next.js 16.0.3 with App Router
 - **React:** 19.2.0
 - **TypeScript:** Version 5 (strict mode)
-- **Testing:** bun:test (60 tests, 100% coverage)
+- **Testing:** bun:test (63 tests, 100% coverage)
 - **Styling:** Tailwind CSS 4.1.6 + DaisyUI 5.0.35
+- **Database:** Upstash Redis (request tracking)
+- **Realtime:** Upstash Realtime 0.3.0 (live updates)
+- **Icons:** Lucide React 0.554.0
+- **Validation:** Zod 4.1.13
 - **Code Quality:** Biome 2.3.7
 - **Package Manager:** Bun
 - **Git Hooks:** Husky 9.1.7 + lint-staged
@@ -33,6 +38,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 
 - Node.js 20+
 - Bun (recommended package manager)
+- Upstash Redis account (for request tracking)
 
 ### Installation
 
@@ -47,11 +53,31 @@ bun install
 # Install git hooks
 bun prepare
 
+# Set up environment variables
+# Create .env.local and add your Upstash Redis credentials:
+# UPSTASH_REDIS_REST_URL=your_url_here
+# UPSTASH_REDIS_REST_TOKEN=your_token_here
+
 # Run the development server
 bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
+
+### Environment Setup
+
+For local development, you'll need Upstash Redis credentials:
+
+1. Create a free account at [Upstash Console](https://console.upstash.com)
+2. Create a new Redis database
+3. Copy the REST API URL and Token from the database dashboard
+4. Create `.env.local` in the project root:
+   ```
+   UPSTASH_REDIS_REST_URL=your_url_here
+   UPSTASH_REDIS_REST_TOKEN=your_token_here
+   ```
+
+The application will work without these variables, but request tracking will be disabled.
 
 ### Available Commands
 
@@ -150,6 +176,7 @@ src/
 │   ├── api/               # API routes
 │   │   ├── check/         # Leap year check endpoints
 │   │   ├── calendar/      # Multi-calendar support
+│   │   ├── realtime/      # WebSocket endpoint for live updates
 │   │   └── stats/         # Statistics endpoints
 │   ├── docs/              # API documentation page
 │   ├── tools/             # Interactive tools page
@@ -160,14 +187,20 @@ src/
 │   ├── sitemap.ts         # Dynamic sitemap
 │   └── robots.ts          # Robots.txt config
 ├── components/            # React components
+│   ├── requests-counter.tsx   # Live request counter
 │   ├── structured-data.tsx    # JSON-LD wrapper
 │   └── ...                    # Other UI components
+├── lib/                   # Library code
+│   ├── redis.ts           # Upstash Redis client
+│   └── realtime.ts        # Upstash Realtime client
 ├── utils/                 # Utility functions
 │   ├── leap-year.ts       # Core leap year logic
-│   ├── leap-year.test.ts  # Leap year tests
-│   ├── api-response.ts    # Standardized API responses
-│   └── api-response.test.ts  # API response tests
-└── constants/             # Global constants (BRAND_NAME, DOMAIN_NAME)
+│   ├── leap-year.test.ts  # Leap year tests (45 tests)
+│   ├── response.ts        # Standardized API responses
+│   ├── response.test.ts   # API response tests (14 tests)
+│   ├── requests.ts        # Request tracking utilities
+│   └── requests.test.ts   # Request tracking tests (4 tests)
+└── constants/             # Global constants
 ```
 
 ## Development
@@ -191,16 +224,17 @@ This project uses:
 
 This project has comprehensive test coverage using **bun:test**:
 
-- **60 tests** across 4 test files
+- **63 tests** across 5 test files
 - **100% code coverage** (function and line coverage)
 - **Colocated tests** - test files live next to source files (Next.js best practice)
 - **BDD-style assertions** - uses `it("should...")` pattern
 
 ### Test Files
 - `src/utils/leap-year.test.ts` - 45 tests for leap year calculations
-- `src/utils/api-response.test.ts` - 14 tests for API response helpers
-- `src/app/api/check/route.test.ts` - 4 tests for current year endpoint
-- `src/app/api/check/[year]/route.test.ts` - 10 tests for specific year endpoint
+- `src/utils/response.test.ts` - 14 tests for API response helpers
+- `src/utils/requests.test.ts` - 4 tests for request tracking
+- `src/app/api/check/route.test.ts` - (tests for current year endpoint)
+- `src/app/api/check/[year]/route.test.ts` - (tests for specific year endpoint)
 
 ### Running Tests
 ```bash
