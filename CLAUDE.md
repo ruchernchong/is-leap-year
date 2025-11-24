@@ -225,5 +225,7 @@ curl https://isleapyear.app/api/stats/distribution
 - **Analytics**: Vercel Analytics is pre-integrated in the root layout
 - **Satirical Tone**: The project is intentionally humorous - maintain this tone when adding content
 - **Live URL**: https://isleapyear.app
-- **Automated Releases**: GitHub Actions workflow automatically runs on main branch pushes, validates code quality (lint + build), and creates releases via semantic-release
+- **CI/CD Workflows**:
+  - **Pull Requests**: Automated checks (lint + build) run on all PRs to main via `.github/workflows/checks.yml`
+  - **Releases**: GitHub Actions automatically runs on main branch pushes, validates code quality, and creates releases via semantic-release in `.github/workflows/release.yml`
 - **Commit Conventions**: All commits must follow conventional commit format or they will be rejected by the commit-msg hook

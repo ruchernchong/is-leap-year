@@ -164,6 +164,12 @@ This project uses:
 
 ## CI/CD Pipeline
 
+### Pull Request Checks
+Automated quality checks run on all pull requests to `main`:
+1. **Lint Check**: Validates code quality with Biome
+2. **Build**: Ensures production build succeeds
+
+### Release Workflow
 GitHub Actions automatically runs on every push to `main`:
 1. **Lint Check**: Validates code quality with Biome
 2. **Build**: Ensures production build succeeds
