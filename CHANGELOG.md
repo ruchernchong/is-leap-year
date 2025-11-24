@@ -1,8 +1,33 @@
 ## [1.0.3](https://github.com/ruchernchong/is-leap-year/compare/v1.0.2...v1.0.3) (2025-11-24)
 
+
+### Code Quality
+
+* resolve SonarQube code quality issues ([d5835a0](https://github.com/ruchernchong/is-leap-year/commit/d5835a00925c0808ce1c979ec20a2cf548dedb3b))
+
 ## [1.0.2](https://github.com/ruchernchong/is-leap-year/compare/v1.0.1...v1.0.2) (2025-11-24)
 
+
+### Refactor
+
+* use parameterised tests in route.test.ts ([eab7290](https://github.com/ruchernchong/is-leap-year/commit/eab729040c12a5d2cd565188799ac7960106debc))
+
 ## [1.0.1](https://github.com/ruchernchong/is-leap-year/compare/v1.0.0...v1.0.1) (2025-11-24)
+
+
+### Testing
+
+* add comprehensive test suite with 100% coverage ([464d65f](https://github.com/ruchernchong/is-leap-year/commit/464d65f5af4381e111b9e3cb97df5cb66743c154))
+
+
+### CI/CD
+
+* add test step to checks workflow ([587b908](https://github.com/ruchernchong/is-leap-year/commit/587b908d17924af0d80a9aa1ade2a717a3eb9938))
+
+
+### Documentation
+
+* update documentation with test coverage ([d85ba84](https://github.com/ruchernchong/is-leap-year/commit/d85ba847c412569b6452f57afe5c1e543e39a17b))
 
 # 1.0.0 (2025-11-24)
 
