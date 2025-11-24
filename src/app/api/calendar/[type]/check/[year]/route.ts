@@ -1,5 +1,4 @@
 import type { NextRequest } from "next/server";
-import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   getDaysInFebruary,
   isChineseLeapYear,
@@ -7,6 +6,7 @@ import {
   isHebrewLeapYear,
   isJulianLeapYear,
 } from "@/utils/leap-year";
+import { errorResponse, successResponse } from "@/utils/response";
 
 export const GET = async (
   _request: NextRequest,
