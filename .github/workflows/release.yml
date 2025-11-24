@@ -24,12 +24,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@0a44ba7841725637a19e89fa1f4cfb6d5ca8b6d8 # v4.2.0
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
