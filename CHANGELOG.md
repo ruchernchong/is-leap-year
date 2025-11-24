@@ -1,3 +1,18 @@
+## 1.1.0 (2025-11-24)
+
+* Merge pull request #2 from ruchernchong/feature/usage-tracking ([748ec66](https://github.com/ruchernchong/is-leap-year/commit/748ec66)), closes [#2](https://github.com/ruchernchong/is-leap-year/issues/2)
+* Update CHANGELOG for version 1.0.4 ([dca3ac9](https://github.com/ruchernchong/is-leap-year/commit/dca3ac9))
+* chore: add @upstash/redis dependency ([3c8e45e](https://github.com/ruchernchong/is-leap-year/commit/3c8e45e))
+* chore: clean up config files ([0190579](https://github.com/ruchernchong/is-leap-year/commit/0190579))
+* docs: update usage tracking documentation ([2f5e58f](https://github.com/ruchernchong/is-leap-year/commit/2f5e58f))
+* feat: add realtime request count API ([51aaa4c](https://github.com/ruchernchong/is-leap-year/commit/51aaa4c))
+* feat: add realtime request counter UI ([2705f44](https://github.com/ruchernchong/is-leap-year/commit/2705f44))
+* feat: add Redis client for Vercel KV ([e1b5ac0](https://github.com/ruchernchong/is-leap-year/commit/e1b5ac0))
+* feat: add request tracking utilities ([dd18e3a](https://github.com/ruchernchong/is-leap-year/commit/dd18e3a))
+* feat: integrate tracking in API routes ([58ccd6b](https://github.com/ruchernchong/is-leap-year/commit/58ccd6b))
+* refactor: rename api-response to response ([28b3069](https://github.com/ruchernchong/is-leap-year/commit/28b3069))
+* refactor: simplify semantic-release config ([497ca4d](https://github.com/ruchernchong/is-leap-year/commit/497ca4d))
+
 ## [1.0.4](https://github.com/ruchernchong/is-leap-year/compare/v1.0.3...v1.0.4) (2025-11-24)
 
 * docs: add missing changelog entries for v1.0.1-3 ([69856cb](https://github.com/ruchernchong/is-leap-year/commit/69856cb))
