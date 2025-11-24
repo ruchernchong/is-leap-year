@@ -1,7 +1,6 @@
+import type { Metadata } from "next";
 import { CodeBlock } from "@/components/code-block";
 import { DOMAIN_NAME } from "@/constants";
-import type { Metadata } from "next";
-import React from "react";
 
 export const metadata: Metadata = {
   title: "API Documentation",

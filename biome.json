@@ -23,6 +23,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnknownProperty": "off"
+      },
       "nursery": {
         "useSortedClasses": {
           "fix": "safe",

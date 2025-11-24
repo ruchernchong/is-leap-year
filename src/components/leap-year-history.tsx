@@ -1,5 +1,3 @@
-import React from "react";
-
 export const LeapYearHistory = () => {
   return (
     <div className="rounded-box border border-gray-800 bg-accent-content p-6">

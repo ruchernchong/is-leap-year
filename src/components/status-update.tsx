@@ -1,5 +1,3 @@
-import React from "react";
-
 interface StatusUpdateProps {
   date: string;
   message: string;

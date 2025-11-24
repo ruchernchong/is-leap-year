@@ -1,9 +1,9 @@
+import type { NextRequest } from "next/server";
 import { errorResponse, successResponse } from "@/utils/api-response";
 import {
   findNextGregorianLeapYear,
   isGregorianLeapYear,
 } from "@/utils/leap-year";
-import type { NextRequest } from "next/server";
 
 // Handler for batch checking multiple years
 export const POST = async (request: NextRequest) => {

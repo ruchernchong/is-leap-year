@@ -1,6 +1,6 @@
+import type { NextRequest } from "next/server";
 import { errorResponse, successResponse } from "@/utils/api-response";
 import { isGregorianLeapYear } from "@/utils/leap-year";
-import type { NextRequest } from "next/server";
 
 // Get the total number of leap years in a date range
 export const GET = async (request: NextRequest) => {

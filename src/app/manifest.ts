@@ -1,5 +1,5 @@
+import type { MetadataRoute } from "next";
 import { BRAND_NAME } from "@/constants";
-import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
