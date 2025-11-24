@@ -35,7 +35,11 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "daisyui": "^5.0.35",
     "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "semantic-release": "^25.0.2",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc}": "biome check --write"
   }
 }
