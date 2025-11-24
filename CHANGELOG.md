@@ -1,4 +1,4 @@
-## <small>1.0.4 (2025-11-24)</small>
+## [1.0.4](https://github.com/ruchernchong/is-leap-year/compare/v1.0.3...v1.0.4) (2025-11-24)
 
 * docs: add missing changelog entries for v1.0.1-3 ([69856cb](https://github.com/ruchernchong/is-leap-year/commit/69856cb))
 * chore: use conventionalcommits preset ([d2e4a19](https://github.com/ruchernchong/is-leap-year/commit/d2e4a19))
