@@ -1,3 +1,7 @@
+## <small>1.1.1 (2025-11-24)</small>
+
+* fix: add missing semantic-release dependencies ([e1b8c58](https://github.com/ruchernchong/is-leap-year/commit/e1b8c58))
+
 ## 1.1.0 (2025-11-24)
 
 
