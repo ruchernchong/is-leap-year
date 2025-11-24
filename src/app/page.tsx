@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import type { SoftwareApplication, WithContext } from "schema-dts";
 import { CodeBlock } from "@/components/code-block";
 import { LeapYearHistory } from "@/components/leap-year-history";
 import { StructuredData } from "@/components/structured-data";
 import { BRAND_NAME, DOMAIN_NAME } from "@/constants";
-import type { Metadata } from "next";
-import React from "react";
-import type { SoftwareApplication, WithContext } from "schema-dts";
 import packageJson from "../../package.json";
 
 export const metadata: Metadata = {
@@ -43,7 +43,13 @@ const Home = () => (
     {/* Hero Section */}
     <section className="px-4 py-16 text-center">
       <div className="mb-8 flex justify-center">
-        <img src="/logo.svg" alt="IsLeapYear Logo" className="h-32 w-32" />
+        <Image
+          src="/logo.svg"
+          alt="IsLeapYear Logo"
+          width={128}
+          height={128}
+          className="h-32 w-32"
+        />
       </div>
       <h1 className="mb-6 font-bold text-5xl tracking-tight">
         Say Goodbye to Leap Year Confusion, Forever.

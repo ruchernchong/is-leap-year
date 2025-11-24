@@ -1,6 +1,6 @@
 # IsLeapYear 🗓️
 
-A satirical high-performance leap year detection API that solves the world's most over-engineered problem. Built with Next.js 15, React 19, and powered by our proprietary Quantum LeapCore™ Engine.
+A satirical high-performance leap year detection API that solves the world's most over-engineered problem. Built with Next.js 16, React 19, and powered by our proprietary Quantum LeapCore™ Engine.
 
 **Live Site:** [https://isleapyear.app](https://isleapyear.app)
 
@@ -10,7 +10,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 - 🔒 **Military-Grade Security** - Your leap year status remains confidential
 - 🌐 **Multi-Calendar Support** - Gregorian, Julian, Hebrew, and Chinese calendars
 - 📊 **Comprehensive API** - RESTful endpoints for all your leap year needs
-- ⚡ **Lightning Fast** - Built with Next.js 15 and Turbopack
+- ⚡ **Lightning Fast** - Built with Next.js 16 and Turbopack
 
 ## Tech Stack
 

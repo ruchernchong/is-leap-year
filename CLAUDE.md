@@ -47,17 +47,22 @@ Uses semantic-release for automated versioning and changelog generation:
 bun semantic-release # Run semantic release (CI only)
 ```
 
-Configured to:
+Configuration (`.releaserc.json`):
 - Analyze commits and determine version bump
 - Generate CHANGELOG.md
 - Create GitHub releases
 - Commit updated files with `chore(release): version [skip ci]`
+
+Commitlint configuration (`.commitlintrc.json`):
+- Enforces conventional commit format
+- Validates commit messages via commit-msg hook
 
 Biome configuration (biome.json):
 - Uses spaces for indentation
 - Double quotes for JavaScript
 - Auto-organizes imports on save
 - Custom rule for sorted Tailwind classes
+- Disabled `noUnknownProperty` for CSS @plugin syntax
 
 ## Architecture
 
