@@ -1,0 +1,61 @@
+import type { Options } from "semantic-release";
+
+const config: Options = {
+	branches: [
+		"main",
+		{ name: "next", prerelease: true },
+		{ name: "beta", prerelease: true },
+		{ name: "alpha", prerelease: true },
+	],
+
+	plugins: [
+		[
+			"@semantic-release/commit-analyzer",
+			{
+				preset: "angular",
+				releaseRules: [
+					{ type: "docs", release: "patch" },
+					{ type: "refactor", release: "patch" },
+					{ type: "style", release: "patch" },
+				],
+			},
+		],
+
+		[
+			"@semantic-release/release-notes-generator",
+			{
+				preset: "angular",
+				writerOpts: {
+					commitsSort: ["subject", "scope"],
+				},
+			},
+		],
+
+		[
+			"@semantic-release/changelog",
+			{
+				changelogFile: "CHANGELOG.md",
+			},
+		],
+
+		[
+			"@semantic-release/github",
+			{
+				successComment: false,
+				failComment: false,
+				releasedLabels: ["released"],
+			},
+		],
+
+		[
+			"@semantic-release/git",
+			{
+				assets: ["CHANGELOG.md", "package.json"],
+				message:
+					"chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+			},
+		],
+	],
+};
+
+export default config;
