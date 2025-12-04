@@ -1,3 +1,13 @@
+## <small>1.1.2 (2025-12-04)</small>
+
+* fix: patch CVE-2025-55182 RCE ([34b5b86](https://github.com/ruchernchong/is-leap-year/commit/34b5b86))
+* Delete .github/dependabot.yml ([ad9c3c1](https://github.com/ruchernchong/is-leap-year/commit/ad9c3c1))
+* Fix package-ecosystem value in dependabot.yml ([eb885b8](https://github.com/ruchernchong/is-leap-year/commit/eb885b8))
+* Merge pull request #3 from ruchernchong/dependabot/github_actions/actions/checkout-6 ([5d98da7](https://github.com/ruchernchong/is-leap-year/commit/5d98da7)), closes [#3](https://github.com/ruchernchong/is-leap-year/issues/3)
+* Merge pull request #4 from ruchernchong/dependabot/github_actions/actions/setup-node-6 ([f6e4b92](https://github.com/ruchernchong/is-leap-year/commit/f6e4b92)), closes [#4](https://github.com/ruchernchong/is-leap-year/issues/4)
+* chore(deps): bump actions/checkout from 4 to 6 ([1750313](https://github.com/ruchernchong/is-leap-year/commit/1750313))
+* chore(deps): bump actions/setup-node from 4 to 6 ([2c953f1](https://github.com/ruchernchong/is-leap-year/commit/2c953f1))
+
 ## <small>1.1.1 (2025-11-24)</small>
 
 * fix: add missing semantic-release dependencies ([e1b8c58](https://github.com/ruchernchong/is-leap-year/commit/e1b8c58))
