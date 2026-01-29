@@ -16,8 +16,8 @@ A satirical high-performance leap year detection API that solves the world's mos
 
 ## Tech Stack
 
-- **Framework:** Next.js 16.0.3 with App Router
-- **React:** 19.2.0
+- **Framework:** Next.js 16.1.5 with App Router
+- **React:** 19.2.1
 - **TypeScript:** Version 5 (strict mode)
 - **Testing:** bun:test (63 tests, 100% coverage)
 - **Styling:** Tailwind CSS 4.1.6 + DaisyUI 5.0.35
@@ -181,6 +181,8 @@ src/
 │   ├── docs/              # API documentation page
 │   ├── tools/             # Interactive tools page
 │   ├── contact/           # Contact page
+│   ├── status/            # Status page
+│   ├── llms.txt/          # LLM-friendly documentation endpoint
 │   ├── layout.tsx         # Root layout with metadata
 │   ├── page.tsx           # Homepage
 │   ├── manifest.ts        # PWA manifest
@@ -248,7 +250,7 @@ bun test:coverage     # Run with coverage report
 ### Pull Request Checks
 Automated quality checks run on all pull requests to `main`:
 1. **Lint Check**: Validates code quality with Biome
-2. **Test**: Runs 60 tests with 100% coverage
+2. **Test**: Runs 63 tests with 100% coverage
 3. **Build**: Ensures production build succeeds
 
 ### Release Workflow

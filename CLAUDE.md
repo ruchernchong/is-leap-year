@@ -70,8 +70,8 @@ Biome configuration (biome.json):
 ## Architecture
 
 ### Tech Stack
-- **Framework**: Next.js 16.0.3 with App Router
-- **React**: Version 19.2.0 (latest)
+- **Framework**: Next.js 16.1.5 with App Router
+- **React**: Version 19.2.1 (latest)
 - **Styling**: Tailwind CSS 4.1.6 with DaisyUI 5.0.35 components
 - **TypeScript**: Version 5 with strict mode enabled
 - **Testing**: bun:test with 100% coverage (63 tests)
@@ -105,6 +105,8 @@ src/
 │   ├── docs/              # API documentation page
 │   ├── tools/             # Interactive tools page
 │   ├── contact/           # Contact page
+│   ├── status/            # Status page
+│   ├── llms.txt/          # LLM-friendly documentation endpoint
 │   ├── layout.tsx         # Root layout with metadata
 │   ├── page.tsx           # Homepage
 │   ├── manifest.ts        # PWA manifest
