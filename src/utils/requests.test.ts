@@ -1,25 +1,23 @@
-import { afterEach, beforeEach, describe, expect, it, mock } from "bun:test";
-import { getTotalRequests, incrementRequests } from "./requests";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-// Mock the redis module
-const mockIncr = mock(() => Promise.resolve(1));
-const mockGet = mock(() => Promise.resolve(100));
+const mockIncr = vi.fn();
+const mockGet = vi.fn();
+const mockEmit = vi.fn();
 
-mock.module("@/lib/redis", () => ({
+vi.mock("@/lib/redis", () => ({
   redis: {
-    incr: mockIncr,
-    get: mockGet,
+    incr: (...args: unknown[]) => mockIncr(...args),
+    get: (...args: unknown[]) => mockGet(...args),
   },
 }));
 
-// Mock the realtime module
-const mockEmit = mock(() => Promise.resolve());
-
-mock.module("@/lib/realtime", () => ({
+vi.mock("@/lib/realtime", () => ({
   realtime: {
-    emit: mockEmit,
+    emit: (...args: unknown[]) => mockEmit(...args),
   },
 }));
+
+import { getTotalRequests, incrementRequests } from "./requests";
 
 describe("Request Tracking", () => {
   beforeEach(() => {
@@ -38,7 +36,6 @@ describe("Request Tracking", () => {
     it("should call redis.incr with the correct key", async () => {
       mockIncr.mockResolvedValueOnce(42);
       await incrementRequests();
-      // Give it a moment for the fire-and-forget promise
       await new Promise((resolve) => setTimeout(resolve, 10));
       expect(mockIncr).toHaveBeenCalledWith("requests:total");
       expect(mockEmit).toHaveBeenCalledWith("requests.count", 42);
@@ -46,7 +43,6 @@ describe("Request Tracking", () => {
 
     it("should not throw error if redis fails", async () => {
       mockIncr.mockRejectedValueOnce(new Error("Redis error"));
-      // The function catches errors internally and doesn't throw
       await expect(incrementRequests()).resolves.toBeUndefined();
     });
   });

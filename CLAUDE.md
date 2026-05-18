@@ -9,31 +9,31 @@ IsLeapYear is a satirical Next.js web application that provides a "high-performa
 ## Common Commands
 
 ### Development
-This project uses **Bun** as the package manager:
+This project uses **pnpm** as the package manager:
 ```bash
-bun dev              # Start Next.js dev server with Turbopack
-bun build            # Build production bundle with Turbopack
-bun start            # Start production server
-bun lint             # Run Biome linting
-bun format           # Format all files with Biome
-bun test             # Run tests with bun:test
-bun test:watch       # Run tests in watch mode
-bun test:coverage    # Run tests with coverage report
+pnpm dev              # Start Next.js dev server with Turbopack
+pnpm build            # Build production bundle with Turbopack
+pnpm start            # Start production server
+pnpm lint             # Run Biome linting
+pnpm format           # Format all files with Biome
+pnpm test             # Run tests with Vitest
+pnpm test:watch       # Run tests in watch mode
+pnpm test:coverage    # Run tests with coverage report
+pnpm prepare          # Install Husky hooks
 ```
 
 ### Code Quality
 The project uses Biome 2.3.7 for linting and formatting (not ESLint/Prettier):
 ```bash
-bun biome check .              # Check all files
-bun biome check --write .      # Check and auto-fix
-bun biome format --write .     # Format all files
+pnpm biome check .              # Check all files
+pnpm biome check --write .      # Check and auto-fix
+pnpm biome format --write .     # Format all files
 ```
 
 ### Git Hooks & Automation
 The project uses Husky for git hooks with automated workflows:
 ```bash
-bun prepare          # Install Husky hooks
-```
+pnpm prepare          # Install Husky hooks
 
 Configured hooks:
 - **pre-commit**: Runs lint-staged (formats staged files with Biome)
@@ -47,8 +47,7 @@ Commitlint enforces conventional commits:
 ### Release Automation
 Uses semantic-release for automated versioning and changelog generation:
 ```bash
-bun semantic-release # Run semantic release (CI only)
-```
+pnpm semantic-release # Run semantic release (CI only)
 
 Configuration (`.releaserc.json`):
 - Analyze commits and determine version bump
@@ -74,7 +73,7 @@ Biome configuration (biome.json):
 - **React**: Version 19.2.1 (latest)
 - **Styling**: Tailwind CSS 4.1.6 with DaisyUI 5.0.35 components
 - **TypeScript**: Version 5 with strict mode enabled
-- **Testing**: bun:test with 100% coverage (63 tests)
+- **Testing**: Vitest with 100% coverage (63 tests)
 - **Analytics**: Vercel Analytics 1.5.0 integrated
 - **Database**: Upstash Redis for usage tracking with realtime updates
 - **Realtime**: Upstash Realtime 0.3.0 for live request counter
@@ -306,7 +305,7 @@ curl https://isleapyear.app/api/stats/distribution
 
 ## Testing
 
-This project uses **bun:test** with comprehensive test coverage:
+This project uses **Vitest** with comprehensive test coverage:
 
 ### Test Structure
 Tests are colocated with source files (Next.js best practice):
@@ -329,13 +328,13 @@ src/
 - **Total Tests**: 63 passing
 - **Coverage**: 100% function and line coverage
 - **Test Pattern**: Uses `it("should...")` BDD-style assertions
-- **Runner**: Built-in bun:test (no additional dependencies required)
+- **Runner**: Vitest
 
 ### Running Tests
 ```bash
-bun test              # Run all tests
-bun test:watch        # Run tests in watch mode
-bun test:coverage     # Run with coverage report
+pnpm test              # Run all tests
+pnpm test:watch        # Run tests in watch mode
+pnpm test:coverage     # Run with coverage report
 ```
 
 ### Test Categories
@@ -366,7 +365,7 @@ bun test:coverage     # Run with coverage report
 ## Important Notes
 
 - **Vercel Deployment**: Configured for Vercel with vercel.json, deployed to Singapore region (sin1)
-- **Package Manager**: Uses Bun exclusively (bun.lock present) - migrated from pnpm, do not use npm, yarn, or pnpm
+- **Package Manager**: Uses pnpm exclusively (pnpm-lock.yaml present) - do not use npm, yarn, or bun
 - **Turbopack**: Uses Next.js Turbopack for faster builds (automatically enabled in dev and build)
 - **Analytics**: Vercel Analytics is pre-integrated in the root layout
 - **Satirical Tone**: The project is intentionally humorous - maintain this tone when adding content

@@ -34,16 +34,16 @@ This Skill helps maintain code quality using Biome for linting and formatting in
 
 ```bash
 # Check all files for errors
-bun biome check .
+pnpm biome check .
 
 # Check and auto-fix issues
-bun biome check --write .
+pnpm biome check --write .
 
 # Format all files
-bun biome format --write .
+pnpm biome format --write .
 
 # Lint only (no formatting)
-bun lint
+pnpm lint
 ```
 
 ## Biome Configuration
@@ -108,7 +108,7 @@ Runs lint-staged on all staged files:
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-bunx lint-staged
+pnpm lint-staged
 ```
 
 **What it does:**
@@ -124,7 +124,7 @@ Validates commit messages using commitlint:
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-bunx --no -- commitlint --edit ${1}
+npx --no -- commitlint --edit ${1}
 ```
 
 **Valid commit format:**
@@ -192,27 +192,27 @@ Located in `package.json`:
 
 ```bash
 # Check for issues
-bun biome check .
+pnpm biome check .
 
 # Auto-fix everything
-bun biome check --write .
+pnpm biome check --write .
 ```
 
 ### 2. Format Specific Files
 
 ```bash
 # Format a single file
-bunx biome format --write src/app/page.tsx
+npx biome format --write src/app/page.tsx
 
 # Format a directory
-bunx biome format --write src/components/
+npx biome format --write src/components/
 ```
 
 ### 3. Organize Imports
 
 Biome automatically organizes imports when running:
 ```bash
-bun biome check --write .
+pnpm biome check --write .
 ```
 
 **Import order:**
@@ -278,8 +278,8 @@ Install the official Biome extension:
 
 ### "Biome check failed"
 
-1. Run `bun biome check .` to see errors
-2. Run `bun biome check --write .` to auto-fix
+1. Run `pnpm biome check .` to see errors
+2. Run `pnpm biome check --write .` to auto-fix
 3. Check `biome.json` for rule configuration
 4. Review error messages for manual fixes
 
@@ -298,8 +298,8 @@ git commit -m "fix(api): handle invalid year parameters"
 
 ### "lint-staged failed"
 
-1. Check which files failed: `bunx lint-staged`
-2. Run Biome directly: `bun biome check --write .`
+1. Check which files failed: `pnpm lint-staged`
+2. Run Biome directly: `pnpm biome check --write .`
 3. Stage fixed files: `git add .`
 4. Retry commit
 
@@ -307,7 +307,7 @@ git commit -m "fix(api): handle invalid year parameters"
 
 1. **Run checks before committing:**
    ```bash
-   bun biome check --write .
+   pnpm biome check --write .
    ```
 
 2. **Let hooks work:** Don't bypass with `--no-verify` unless emergency
@@ -327,10 +327,10 @@ GitHub Actions runs checks on all PRs:
 ```yaml
 # .github/workflows/checks.yml
 - name: Lint
-  run: bun lint
+  run: pnpm lint
 
 - name: Build
-  run: bun build
+  run: pnpm build
 ```
 
 **All PRs must:**
@@ -340,7 +340,7 @@ GitHub Actions runs checks on all PRs:
 
 ## Important Notes
 
-- This project uses **Bun**, not npm/yarn/pnpm
+- This project uses **pnpm**, not npm/yarn/bun
 - Biome configuration is in `biome.json`
 - Git hooks are in `.husky/` directory
 - Commitlint config is in `.commitlintrc.json`

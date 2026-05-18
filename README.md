@@ -19,14 +19,14 @@ A satirical high-performance leap year detection API that solves the world's mos
 - **Framework:** Next.js 16.1.5 with App Router
 - **React:** 19.2.1
 - **TypeScript:** Version 5 (strict mode)
-- **Testing:** bun:test (63 tests, 100% coverage)
+- **Testing:** Vitest (63 tests, 100% coverage)
 - **Styling:** Tailwind CSS 4.1.6 + DaisyUI 5.0.35
 - **Database:** Upstash Redis (request tracking)
 - **Realtime:** Upstash Realtime 0.3.0 (live updates)
 - **Icons:** Lucide React 0.554.0
 - **Validation:** Zod 4.1.13
 - **Code Quality:** Biome 2.3.7
-- **Package Manager:** Bun
+- **Package Manager:** pnpm
 - **Git Hooks:** Husky 9.1.7 + lint-staged
 - **CI/CD:** GitHub Actions + semantic-release
 - **Analytics:** Vercel Analytics
@@ -37,7 +37,7 @@ A satirical high-performance leap year detection API that solves the world's mos
 ### Prerequisites
 
 - Node.js 20+
-- Bun (recommended package manager)
+- pnpm (recommended package manager)
 - Upstash Redis account (for request tracking)
 
 ### Installation
@@ -48,10 +48,10 @@ git clone https://github.com/ruchernchong/is-leap-year.git
 cd is-leap-year
 
 # Install dependencies
-bun install
+pnpm install
 
 # Install git hooks
-bun prepare
+pnpm prepare
 
 # Set up environment variables
 # Create .env.local and add your Upstash Redis credentials:
@@ -59,7 +59,7 @@ bun prepare
 # UPSTASH_REDIS_REST_TOKEN=your_token_here
 
 # Run the development server
-bun dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
@@ -82,15 +82,15 @@ The application will work without these variables, but request tracking will be 
 ### Available Commands
 
 ```bash
-bun dev              # Start development server with Turbopack
-bun build            # Build for production
-bun start            # Start production server
-bun lint             # Run Biome linting
-bun format           # Format all files with Biome
-bun test             # Run tests
-bun test:watch       # Run tests in watch mode
-bun test:coverage    # Run tests with coverage report
-bun prepare          # Install Husky git hooks
+pnpm dev              # Start development server with Turbopack
+pnpm build            # Build for production
+pnpm start            # Start production server
+pnpm lint             # Run Biome linting
+pnpm format           # Format all files with Biome
+pnpm test             # Run tests
+pnpm test:watch       # Run tests in watch mode
+pnpm test:coverage    # Run tests with coverage report
+pnpm prepare          # Install Husky git hooks
 ```
 
 ### Code Quality & Commit Conventions
@@ -98,9 +98,9 @@ bun prepare          # Install Husky git hooks
 This project uses [Biome](https://biomejs.dev/) for linting and formatting:
 
 ```bash
-bun biome check .              # Check all files
-bun biome check --write .      # Check and auto-fix
-bun biome format --write .     # Format all files
+pnpm biome check .              # Check all files
+pnpm biome check --write .      # Check and auto-fix
+pnpm biome format --write .     # Format all files
 ```
 
 **Important:** Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) format:
@@ -224,7 +224,7 @@ This project uses:
 
 ## Testing
 
-This project has comprehensive test coverage using **bun:test**:
+This project has comprehensive test coverage using **Vitest**:
 
 - **63 tests** across 5 test files
 - **100% code coverage** (function and line coverage)
@@ -240,9 +240,9 @@ This project has comprehensive test coverage using **bun:test**:
 
 ### Running Tests
 ```bash
-bun test              # Run all tests
-bun test:watch        # Run tests in watch mode
-bun test:coverage     # Run with coverage report
+pnpm test              # Run all tests
+pnpm test:watch        # Run tests in watch mode
+pnpm test:coverage     # Run with coverage report
 ```
 
 ## CI/CD Pipeline

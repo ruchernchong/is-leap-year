@@ -1,5 +1,5 @@
-import { describe, expect, it } from "bun:test";
 import { NextRequest } from "next/server";
+import { describe, expect, it } from "vitest";
 import { GET } from "./route";
 
 describe("GET /api/check", () => {
